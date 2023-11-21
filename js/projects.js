@@ -145,7 +145,7 @@ function projects_events()
 	function generate(data)
 	{
 		document.querySelector('#projects_section .projects_content').innerHTML = '';
-		document.querySelector('#projects_section .other_projects_content').innerHTML = '';
+		//document.querySelector('#projects_section .other_projects_content').innerHTML = '';
 		let inverted = true;
 		let i = 0;
 

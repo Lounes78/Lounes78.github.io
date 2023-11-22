@@ -13,7 +13,7 @@ window.onload = () =>
 
 	header_events();
 	home_events();
-	projects_events();
+	//projects_events();
 	//skills_events();
 	//experience_events();
 

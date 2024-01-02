@@ -11,9 +11,6 @@ A website presenting my projects.
 
 <br/>
 
-<p align="center">
-	<img src="./resources/misc/Thumbnail.png" width="700">
-</p>
 
 <br/>
 

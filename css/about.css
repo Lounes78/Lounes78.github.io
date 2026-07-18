@@ -66,11 +66,12 @@
 	display: block;
 	width: clamp(250px, 35vw, 380px);
 	height: clamp(250px, 35vw, 380px);
-	-webkit-clip-path: circle(0%);
-	clip-path: circle(0%);
+	border-radius: 50%;
+	-webkit-clip-path: none;
+	clip-path: none;
 	opacity: 1;
 	transform: translateY(0px);
-	transition: clip-path 1s ease-in-out, -webkit-clip-path 1s ease-in-out;
+	transition: none;
 }
 
 @media screen and (max-width: 800px)

@@ -407,30 +407,38 @@ body.menu_open #menu_backdrop
 {
 	margin: 0;
 	flex: none;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+	transition: box-shadow 0.55s ease-out;
 }
 
 #about_section .photo img
 {
-	clip-path: circle(49.7%);
-	-webkit-clip-path: circle(49.7%);
 	object-fit: cover;
+	opacity: 1;
+	transform: translate3d(0, 0, 0) scale(1);
+	transform-origin: center;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	transition:
+		opacity 0.38s ease-out,
+		transform 0.48s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 #about_section .photo.is_preparing img
 {
-	clip-path: circle(0%);
-	-webkit-clip-path: circle(0%);
+	opacity: 0.88;
+	transform: translate3d(0, 8px, 0) scale(0.985);
 }
 
 #about_section .photo.is_visible img
 {
-	clip-path: circle(49.7%);
-	-webkit-clip-path: circle(49.7%);
+	opacity: 1;
+	transform: translate3d(0, 0, 0) scale(1);
 }
 
 #about_section .photo.is_visible
 {
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
 }
 
 .experience_refresh
@@ -1280,7 +1288,7 @@ a.experience_org:hover
 
 	#about_section .photo.is_preparing img
 	{
-		clip-path: circle(49.7%);
-		-webkit-clip-path: circle(49.7%);
+		opacity: 1;
+		transform: none;
 	}
 }

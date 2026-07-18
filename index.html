@@ -445,7 +445,7 @@
                     <a class="compact_repo_link" href="https://github.com/B-Lounes/x-model-streaming" target="_blank" rel="noreferrer" aria-label="Open Streaming ASR Gateway on GitHub">GitHub ↗</a>
                   </div>
                   <h3><a class="project_title" href="https://github.com/B-Lounes/x-model-streaming" target="_blank" rel="noreferrer">Streaming ASR Gateway</a></h3>
-                  <p class="text">Built a WebSocket gateway around a stateless ASR backend with causal VAD, Arabic-aware stabilization, final-first scheduling, endpoint leases, backpressure, and bounded recovery. Public suite: 316 tests; historical live validation: 16/16 concurrent sessions.</p>
+                  <p class="text">Built a WebSocket gateway around a stateless ASR backend with causal VAD, transcript stabilization, final-first scheduling, endpoint leases, backpressure, and bounded recovery. Public suite: 316 tests; historical live validation: 16/16 concurrent sessions.</p>
                 </div>
                 <div class="tags"><span>Python</span><span>WebSockets</span><span>ASR</span><span>VAD</span><span>Distributed systems</span></div>
               </div>
@@ -456,12 +456,12 @@
                 <div class="header">
                   <div class="logos">
                     <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
-                    <a class="compact_repo_link" href="https://github.com/B-Lounes/ctc-forced-aligner" target="_blank" rel="noreferrer" aria-label="Open Arabic CTC Forced Alignment on GitHub">GitHub ↗</a>
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/ctc-forced-aligner" target="_blank" rel="noreferrer" aria-label="Open XLS-R CTC Forced Aligner on GitHub">GitHub ↗</a>
                   </div>
-                  <h3><a class="project_title" href="https://github.com/B-Lounes/ctc-forced-aligner" target="_blank" rel="noreferrer">Arabic CTC Forced Alignment</a></h3>
-                  <p class="text">Built a resumable Arabic CTC alignment pipeline with duration-balanced tar sharding, torn-write recovery, duplicate suppression, strict merge gates, and atomic publication. A historical internal run processed 4.21 million clips.</p>
+                  <h3><a class="project_title" href="https://github.com/B-Lounes/ctc-forced-aligner" target="_blank" rel="noreferrer">XLS-R CTC Forced Aligner</a></h3>
+                  <p class="text">Built a forced aligner that maps a supplied transcript onto frame-level XLS-R CTC emissions to produce character- and word-level timestamps. Implemented tokenizer-aware target construction, text normalization, frame-to-time conversion, span aggregation, and per-word scoring, then packaged it in a resumable runner historically used on 4.21 million clips.</p>
                 </div>
-                <div class="tags"><span>XLS-R</span><span>PyTorch</span><span>CTC</span><span>Slurm</span><span>Parquet</span></div>
+                <div class="tags"><span>XLS-R</span><span>CTC</span><span>PyTorch</span><span>TorchAudio</span><span>Timestamps</span></div>
               </div>
             </article>
 
@@ -470,10 +470,10 @@
                 <div class="header">
                   <div class="logos">
                     <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
-                    <a class="compact_repo_link" href="https://github.com/B-Lounes/dialect-id" target="_blank" rel="noreferrer" aria-label="Open Arabic Dialect Identification on GitHub">GitHub ↗</a>
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/dialect-id" target="_blank" rel="noreferrer" aria-label="Open Dialect Identification Toolkit on GitHub">GitHub ↗</a>
                   </div>
-                  <h3><a class="project_title" href="https://github.com/B-Lounes/dialect-id" target="_blank" rel="noreferrer">Arabic Dialect Identification</a></h3>
-                  <p class="text">Developed a distributed Arabic dialect-identification toolkit with multiple speech encoders, pseudo-label mixing, full-audio chunk aggregation, calibration, release gates, checkpoint migration, and auditable label export across a fixed 23-label space.</p>
+                  <h3><a class="project_title" href="https://github.com/B-Lounes/dialect-id" target="_blank" rel="noreferrer">Dialect Identification Toolkit</a></h3>
+                  <p class="text">Developed a distributed speech dialect-identification toolkit with multiple speech encoders, pseudo-label mixing, full-audio chunk aggregation, calibration, release gates, checkpoint migration, and auditable label export across a fixed 23-label space.</p>
                 </div>
                 <div class="tags"><span>Speech classification</span><span>PyTorch</span><span>DDP</span><span>Calibration</span><span>Slurm</span></div>
               </div>

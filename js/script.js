@@ -55,6 +55,20 @@ function revealSections()
 	elements.forEach((element) => observer.observe(element));
 }
 
+function syncContactLabelWidths()
+{
+	document.querySelectorAll('#contact_section .social_link').forEach((link) =>
+	{
+		const text = link.querySelector('.social_text');
+		const label = text?.querySelector('span');
+		if (!text || !label)
+			return;
+
+		const expandedWidth = Math.ceil(label.getBoundingClientRect().width) + 2;
+		link.style.setProperty('--size', `${expandedWidth}px`);
+	});
+}
+
 document.addEventListener('DOMContentLoaded', () =>
 {
 	document.documentElement.scrollLeft = 0;
@@ -68,4 +82,8 @@ document.addEventListener('DOMContentLoaded', () =>
 
 	revealPhoto();
 	revealSections();
+	syncContactLabelWidths();
+
+	if (document.fonts)
+		document.fonts.ready.then(syncContactLabelWidths);
 });

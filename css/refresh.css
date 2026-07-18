@@ -428,6 +428,11 @@ body.menu_open #menu_backdrop
 	-webkit-clip-path: circle(49.7%);
 }
 
+#about_section .photo.is_visible
+{
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
 .experience_refresh
 {
 	width: 100%;

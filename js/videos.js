@@ -1,39 +1,81 @@
-function videos_scroll_event()
-{
-	if (!is_safari())
-	{
-		let videos = document.querySelectorAll('video');
-
-		for (let video of videos)
-			if (video.readyState == 4)
-			{
-				if (video.getBoundingClientRect().top <= window.innerHeight && video.getBoundingClientRect().bottom >= 0 && video.paused)
-				{
-					video.parentNode.querySelector('img').style.opacity = '0';
-					video.play();
-				}
-
-				else if ((video.getBoundingClientRect().top > window.innerHeight || video.getBoundingClientRect().bottom < 0) && !video.paused)
-					video.pause();
-			}
-	}
-}
+'use strict';
 
 function videos_events()
 {
-	if (!is_safari())
+	const videos = [...document.querySelectorAll('video')];
+	if (videos.length === 0)
+		return;
+
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+	const desktopVideo = window.matchMedia('(min-width: 961px)');
+	const visibleVideos = new Set();
+
+	function syncControls()
 	{
-		window.setTimeout(() =>
+		videos.forEach((video) =>
 		{
-			let videos = document.querySelectorAll('video');
-
-			for (let video of videos)
-				if (video.readyState != 4)
-					video.load();
-		}, 1000);
-
-		window.addEventListener('scroll', videos_scroll_event);
-		window.addEventListener('resize', videos_scroll_event);
-		window.setInterval(videos_scroll_event, 1000);
+			video.controls = desktopVideo.matches;
+		});
 	}
+
+	function pauseAll()
+	{
+		videos.forEach((video) => video.pause());
+	}
+
+	function playVisible()
+	{
+		if (document.hidden || reducedMotion.matches)
+		{
+			pauseAll();
+			return;
+		}
+
+		visibleVideos.forEach((video) =>
+		{
+			const playRequest = video.play();
+			if (playRequest)
+				playRequest.catch(() => {});
+		});
+	}
+
+	syncControls();
+	desktopVideo.addEventListener('change', syncControls);
+
+	if (!('IntersectionObserver' in window))
+	{
+		pauseAll();
+		return;
+	}
+
+	const observer = new IntersectionObserver((entries) =>
+	{
+		entries.forEach((entry) =>
+		{
+			const video = entry.target;
+
+			if (entry.isIntersecting)
+			{
+				visibleVideos.add(video);
+				playVisible();
+			}
+			else
+			{
+				visibleVideos.delete(video);
+				video.pause();
+			}
+		});
+	}, { rootMargin: '180px 0px', threshold: 0.15 });
+
+	videos.forEach((video) => observer.observe(video));
+
+	document.addEventListener('visibilitychange', () =>
+	{
+		if (document.hidden)
+			pauseAll();
+		else
+			playVisible();
+	});
+
+	reducedMotion.addEventListener('change', playVisible);
 }

@@ -1,60 +1,51 @@
 'use strict';
 
-function home_in_animations()
-{
-	let done = false;
-	let elements = document.querySelectorAll('#home_section .in_animation');
-	let section = document.querySelector('#home_section');
-
-	async function in_animation_check()
-	{
-		if (!done && is_in_viewport(section))
-		{
-			for (let i of elements)
-			{
-				i.style.opacity = '1';
-				i.style.transform = 'translateY(0)';
-				await sleep(300);
-			}
-
-			done = true;
-		}
-	}
-
-	window.addEventListener('scroll', (e) =>
-	{
-		in_animation_check();
-	});
-
-	window.addEventListener('resize', (e) =>
-	{
-		in_animation_check();
-	});
-
-	in_animation_check();
-}
-
 function home_events()
 {
-	let particles_paused = false;
-	particlesJS.load('particles', 'resources/jsons/particles.json');
+	const particleContainer = document.querySelector('#particles');
 
-	window.addEventListener('scroll', (e) =>
+	if (!particleContainer || typeof window.particlesJS === 'undefined')
+		return;
+
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+	let heroVisible = true;
+	let particleInstance = null;
+	let movementEnabled = null;
+
+	function syncParticleMotion()
 	{
-		if (pJSDom[0] && document.querySelector('#particles').getBoundingClientRect().bottom < 0 && !particles_paused)
-		{
-			pJSDom[0].pJS.particles.move.enable = false;
-			particles_paused = true;
-		}
+		if (!particleInstance)
+			return;
 
-		if (pJSDom[0] && document.querySelector('#particles').getBoundingClientRect().bottom >= 0 && particles_paused)
-		{
-			pJSDom[0].pJS.particles.move.enable = true;
-			pJSDom[0].pJS.fn.particlesRefresh();
-			particles_paused = false;
-		}
+		const shouldMove = !reducedMotion.matches && heroVisible && !document.hidden;
+		if (movementEnabled === shouldMove)
+			return;
+
+		movementEnabled = shouldMove;
+		particleInstance.pJS.particles.move.enable = shouldMove;
+
+		if (shouldMove)
+			particleInstance.pJS.fn.vendors.draw();
+	}
+
+	window.particlesJS.load('particles', 'resources/jsons/particles.json', () =>
+	{
+		particleInstance = window.pJSDom[window.pJSDom.length - 1];
+		movementEnabled = particleInstance.pJS.particles.move.enable;
+		syncParticleMotion();
 	});
 
-	let rect = document.querySelector('#home_section .content').getBoundingClientRect();
-	document.querySelector('#home_section').style.minHeight = (rect.height + 90) + 'px';
+	if ('IntersectionObserver' in window)
+	{
+		const observer = new IntersectionObserver((entries) =>
+		{
+			heroVisible = entries[0].isIntersecting;
+			syncParticleMotion();
+		}, { rootMargin: '120px 0px' });
+
+		observer.observe(particleContainer);
+	}
+
+	document.addEventListener('visibilitychange', syncParticleMotion);
+	reducedMotion.addEventListener('change', syncParticleMotion);
 }

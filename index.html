@@ -1,730 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Benali Lounes Portfolio</title>
-		<link rel="shortcut icon" type="image/png" href="resources/images/Favicon.webp"/>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07111f">
 
-		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-		<meta name="description" content="Benali Lounes portfolio."/>
+    <title>Lounes Benali — Speech &amp; Multimodal AI</title>
+    <meta
+      name="description"
+      content="Lounes Benali is a deep learning engineer working on speech, multimodal AI, distributed training, and real-time inference."
+    >
+    <link rel="canonical" href="https://b-lounes.github.io/">
+    <link rel="icon" type="image/svg+xml" href="resources/svgs/Logo.svg">
 
-		<meta property="og:locale" content="en_US"/>
-		<meta property="og:type" content="website"/>
-		<meta property="og:url" content="https://www.lounesbenali.com/portfolio/"/>
-		<meta property="og:image" content="https://www.lounesbenali.com/portfolio/resources/images/Social.png"/>
-		<meta property="og:image:url" content="https://www.lounesbenali/portfolio/resources/images/Social.png"/>
-		<meta property="og:image:secure_url" content="https://www.lounesbenali/portfolio/resources/images/Social.png"/>
-		<meta property="og:image:type" content="image/png"/>
-		<meta property="og:image:width" content="1920"/>
-		<meta property="og:image:height" content="1080"/>
-		<meta property="og:title" content="Benali Lounes Portfolio"/>
-		<meta property="og:site_name" content="Benali Lounes Portfolio"/>
-		<meta property="og:description" content="Benali Lounes portfolio."/>
-		<meta name="twitter:title" content="Benali Lounes Portfolio"/>
-		<meta name="twitter:description" content="Benali Lounes portfolio."/>
-		<meta name="twitter:image" content="https://www.lounesbenali.com/portfolio/resources/images/Social.png"/>
-		<meta name="twitter:card" content="summary_large_image"/>
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://b-lounes.github.io/">
+    <meta property="og:title" content="Lounes Benali — Speech &amp; Multimodal AI">
+    <meta
+      property="og:description"
+      content="Speech and multimodal AI, large-scale training and inference, and selected engineering projects."
+    >
+    <meta property="og:image" content="https://b-lounes.github.io/resources/images/social-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lounes Benali — Speech &amp; Multimodal AI">
+    <meta
+      name="twitter:description"
+      content="Speech and multimodal AI, large-scale training and inference, and selected engineering projects."
+    >
+    <meta name="twitter:image" content="https://b-lounes.github.io/resources/images/social-preview.png">
 
-		<script src="libraries/particlesjs/particles.js"></script>
+    <link rel="stylesheet" href="css/properties.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/other_projects.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/refresh.css">
 
-		<script src="js/properties.js"></script>
-		<script src="js/utils.js"></script>
-		<script src="js/videos.js"></script>
-		<script src="js/header.js"></script>
-		<script src="js/home.js"></script>
-		<script src="js/about.js"></script>
-		<script src="js/projects.js"></script>
-		<script src="js/skills.js"></script>
-		<script src="js/experience.js"></script>
-		<script src="js/script.js"></script>
+    <script src="libraries/particlesjs/particles.js" defer></script>
+    <script src="js/header.js" defer></script>
+    <script src="js/home.js" defer></script>
+    <script src="js/videos.js" defer></script>
+    <script src="js/script.js" defer></script>
 
-		<link rel="stylesheet" type="text/css" href="css/properties.css"/>
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
-		<link rel="stylesheet" type="text/css" href="css/header.css"/>
-		<link rel="stylesheet" type="text/css" href="css/menu.css"/>
-		<link rel="stylesheet" type="text/css" href="css/home.css"/>
-	</head>
-	<body>
-		
-		<div id="loading_screen"></div>
-		
-		<div id="safari_warning">
-			<p>
-				You are using Safari. This website is not optimized for this browser.
-				Please use another browser like Chrome or Firefox.
-			</p>
-		</div>
-		<div id="lcp"><p>LCP</p></div>
-		<div id="header_div" style="height: 100px; box-shadow: none; pointer-events: none; top: 0px;">
-			<header id="header" style="background-color: rgba(16, 29, 48, 0); backdrop-filter: none;">
-				<nav class="nav">
-					<div class="logo">
-						<a class="in_animation in_animation_fast" href="https://www.lounesbenali.com/" style="opacity: 1; transform: translateY(0px);">
-							<img src="resources/svgs/Logo.svg" alt="logo" width="35px" height="35px">
-						</a>
-					</div>
-					<div class="menu" style="display: block;">
-						<ol>
-							<li class="home in_animation" style="opacity: 1; transform: translateY(0px);"><a class="not_button" href="#home">Home</a></li>
-							<li class="about in_animation" style="opacity: 1; transform: translateY(0px);"><a class="not_button" href="#about">About</a></li>
-							<li class="projects in_animation" style="opacity: 1; transform: translateY(0px);"><a class="not_button" href="#projects">Projects</a></li>
-							<li class="contact in_animation" style="opacity: 1; transform: translateY(0px);">
-								<a class="button" href="#contact">
-									<p>Contact</p>
-									<svg class="button_arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.69 17.39"><g>
-										<path class="path_1" d="M8.9 12.4 L8.9 12.4"></path>
-										<path class="path_2" d="M16.2 5 8.9 12.4 1.5 5"></path></g>
-									</svg>
-								</a>
-							</li>
-						</ol>
-					</div>
-					<svg class="menu_icon" viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg" style="display: none;">
-						<line x1="10" y1="10" x2="130" y2="10"></line>
-						<line x1="30" y1="50" x2="130" y2="50"></line>
-						<line x1="50" y1="90" x2="130" y2="90"></line>
-					</svg>
-				</nav>
-			</header>
-		</div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Lounes Benali",
+        "url": "https://b-lounes.github.io/",
+        "jobTitle": "Deep Learning Engineer",
+        "sameAs": [
+          "https://github.com/B-Lounes",
+          "https://www.linkedin.com/in/lounes-benali-b0b022209/"
+        ],
+        "knowsAbout": [
+          "Speech AI",
+          "Multimodal AI",
+          "Distributed machine learning",
+          "Real-time inference"
+        ]
+      }
+    </script>
+  </head>
 
-		<div id="menu_div">
-			<svg class="menu_icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-				<line x1="10" y1="10" x2="90" y2="90"/>
-				<line x1="10" y1="90" x2="90" y2="10"/>
-			</svg>
-			<div class="menu">
-				<ol>
-					<li class="home"><a class="not_button" href="#home">Home</a></li>
-					<li class="about"><a class="not_button" href="#about">About</a></li>
-					<li class="projects"><a class="not_button" href="#projects">Projects</a></li>
-					<li class="skills"><a class="not_button" href="#skills">Skills</a></li>
-					<li class="contact">
-						<a class="button" href="#contact">
-							<p>Contact</p>
-							<svg class="button_arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.69 17.39"><g>
-								<path class="path_1" d="M8.9 12.4 L8.9 12.4"/>
-								<path class="path_2" d="M16.2 5 8.9 12.4 1.5 5"/></g>
-							</svg>
-						</a>
-					</li>
-				</ol>
-			</div>
-		</div>
+  <body>
+    <a class="skip_link" href="#main">Skip to content</a>
 
-
-		<div id="content">
-			<main id="main">
-				<a id="home"></a>
-				<section class="section" id="home_section">
-					<div id="particles"></div>
-					<div class="content">
-						<span class="hi in_animation">Hi, my name is</span>
-						<span class="name in_animation">Benali Lounes.</span>
-						<span class="title in_animation">I’m an Engineering student at Sorbonne University</span>
-						<p class="bio in_animation">
-							and previously at l'Ecole Nationale Polytechnique d'Alger and then Paris-Saclay University
-							
-						</p>
-						<div class="home_button in_animation">
-							<a class="button" href="#about">
-								<p>Get Started</p>
-								<svg class="button_arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.69 17.39"><g>
-									<path class="path_1" d="M8.9 12.4 L8.9 12.4"/>
-									<path class="path_2" d="M16.2 5 8.9 12.4 1.5 5"/>
-								</g></svg>
-							</a>
-						</div>
-					</div>
-				</section>
-
-				<link rel="stylesheet" type="text/css" href="css/about.css"/>
-
-				<a id="about"></a>
-				<section class="section" id="about_section">
-					<div class="content">
-						<span class="section_title">Who am I?</span>
-						<div class="about_content">
-							<p class="p_1">
-								Hi! My name is Benali Lounes, I'm 22 and I try to touch every thing between Computer Science, Engineering and Physics.
-								
-								I like mixing science and math with programming and l’m always looking for new concepts to discover.
-								Since a year and half ago I am fully focused on Artificial Intelligence, trying to understand the way it works. 
-								
-								<br/><br/>
-								In 2020, after getting my baccalureat in mathematics with honors, 
-								I begun a 2 years Preparatory Classes in Science and Technology in Algeirs, Algeria.
-								It was a 4 semesters intensive program preparing for the national competitive exam granting entry to nationwide
-								top engineering schools.
-								
-								<br/><br>
-
-								In 2022, I ranked top 2% in the national competitive examination granting admission at the Electronics Departement
-								of l'<a class="link" href="https://www.enp.edu.dz/en/" target="_blank">École Polytechnique d'Alger</a>
-								 which is a Top Engineering School in Algeria.
-								<br/><br>
-
-								Through my academic route I touched a none negligeable amount of knowledge from pure Physics and Mathematics to diverse 
-								applications in Engineering: Digital Signal Processing, Digital electronics (VHDL, FPGA), operating system, C/C++, 
-								image processing using Python, Analog electronics, Information theory, Calculus, Algebra, Statistics, Probabilities, 
-								Numerical Analysis, Vibrations & Waves, Fluid Mechanics, Thermodynamics, Algorithms and Data Structures, Relationnal Data Base, ...
-
-
-
-
-								<br/><br>
-								Fast forward to 2023, I decided to embark on a new chapter by moving to France. I earned admission to
-								 
-								l'<a class="link" href="https://www.universite-paris-saclay.fr/en" target="_blank">Université Paris-Saclay</a>
-								 
-								marking the beginning of an new phase :)
-								<br/><br>
-
-								Besides all this, It is important to emphasize on the autodidact's part of my personality. 
-							
-								<br/><br>
-								Last Update: Since September 2024, I have been in my first year of a master's degree in Intelligent Systems Engineering at Sorbonne University. At the same time, I am working as a Deep Learning apprentice at AMPERE SWT, the software division of the French car company Renault Group. As part of an R&D team, I am working on a wide variety of projects, and I should say that It's pretty interesting ^^ 
-								<br/><br/>
-								
-							
-							</p>
-							<div class="photo">
-								<img class="in_animation" src="resources/images/lounes.webp" alt="photo" width="760px" height="760px"/>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<div class="section_end about_end"></div>
-
-
-
-
-
-
-				<link rel="stylesheet" type="text/css" href="css/projects.css"/>
-				<link rel="stylesheet" type="text/css" href="css/other_projects.css"/>
-
-				<a id="projects"></a>
-				<section class="section" id="projects_section">
-					<div class="content leaning">
-						<span class="section_title">Some of my Projects</span>
-						
-						<div class="projects_content">
-<div class="in_animation project" style="opacity: 1; transform: translateY(0px);">
-    <div class="project_text">
-        <div class="type">
-            <span>2025</span>
-            <span>•</span>
-            <span>Academic / Personal Project</span>
-        </div>
-
-        <a class="project_title" href="https://github.com/Lounes78/Seenitt" target="_blank">seniT — Glass AI Assistant</a>
-
-        <div class="text">
-            <p>
-                Architected a real-time computer vision assistant for smart glasses (Meta Ray-Ban / Mentra Live) 
-                delivering intelligent audio guidance in-ear. Developed under a <b>Mentra grant</b>, the 
-                system bridges a Kotlin Android client with a Python pipeline (TensorRT, SAM, ONNX). 
-                Currently optimized for chessboard analysis, with roadmap expansion to universal walking 
-                cataloging and multi-game support.
-            </p>
-        </div>
-
-        <div class="tags">
-            <a href="https://kotlinlang.org/" target="_blank">Kotlin</a>
-            <a href="https://www.python.org/" target="_blank">Python</a>
-            <a href="https://onnx.ai/" target="_blank">ONNX</a>
-            <a target="_blank">TensorRT / SAM</a>
-            <a href="https://opencv.org/" target="_blank">Classic CV</a>
-        </div>
-
-        <div class="links">
-            <a class="github" href="https://github.com/Lounes78/Seenitt" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31">
-                    <path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08a4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"/>
-                </svg>
-                <span class="bubble">See the code</span>
+    <div id="header_div">
+      <header id="header">
+        <nav class="nav" aria-label="Primary navigation">
+          <div class="logo">
+            <a href="#home" aria-label="Lounes Benali — home">
+              <img src="resources/svgs/Logo.svg" alt="" width="35" height="35">
             </a>
-            <a class="test" href="https://mentraglass.com/" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.09 18.64">
-                    <path d="M14.55 7.52 4.62 1.78A2.08 2.08 0 0 0 1.5 3.58V15.05a2.08 2.08 0 0 0 3.12 1.8l9.93-5.73A2.08 2.08 0 0 0 14.55 7.52Z"/>
-                </svg>
-                <span class="bubble">About Mentra</span>
-            </a>
-        </div>
+          </div>
+
+          <div class="menu">
+            <ol>
+              <li><a class="not_button" href="#home">Home</a></li>
+              <li><a class="not_button" href="#about">About</a></li>
+              <li><a class="not_button" href="#experience">Experience</a></li>
+              <li><a class="not_button" href="#projects">Projects</a></li>
+              <li><a class="not_button" href="#education">Education</a></li>
+              <li><a class="not_button" href="resources/documents/Lounes-Benali-CV.pdf">CV ↗</a></li>
+              <li>
+                <a class="button" href="#contact">
+                  <span>Contact</span>
+                  <svg class="button_arrow" aria-hidden="true" viewBox="0 0 17.69 17.39">
+                    <path class="path_1" d="M8.9 12.4 L8.9 12.4"></path>
+                    <path class="path_2" d="M16.2 5 8.9 12.4 1.5 5"></path>
+                  </svg>
+                </a>
+              </li>
+            </ol>
+          </div>
+
+          <button
+            class="menu_icon"
+            type="button"
+            aria-label="Open navigation"
+            aria-controls="menu_div"
+            aria-expanded="false"
+          >
+            <svg aria-hidden="true" viewBox="0 0 140 100">
+              <line x1="10" y1="10" x2="130" y2="10"></line>
+              <line x1="30" y1="50" x2="130" y2="50"></line>
+              <line x1="50" y1="90" x2="130" y2="90"></line>
+            </svg>
+          </button>
+        </nav>
+      </header>
     </div>
 
-    <div class="project_view" style="max-width: 500px; margin-left: auto;">
-        <a href="https://github.com/Lounes78/Seenitt" target="_blank">
-            <img src="resources/images/projects/seniT-chess.jpg" alt="seniT AI Chess Assistant" style="width: 100%; border-radius: 12px;">
+    <button id="menu_backdrop" type="button" aria-label="Close navigation" tabindex="-1"></button>
+    <aside id="menu_div" aria-label="Mobile navigation panel" aria-hidden="true" inert hidden>
+      <button class="menu_icon" type="button" aria-label="Close navigation">
+        <svg aria-hidden="true" viewBox="0 0 100 100">
+          <line x1="10" y1="10" x2="90" y2="90"></line>
+          <line x1="10" y1="90" x2="90" y2="10"></line>
+        </svg>
+      </button>
+      <nav class="menu" aria-label="Mobile navigation">
+        <ol>
+          <li><a class="not_button" href="#home">Home</a></li>
+          <li><a class="not_button" href="#about">About</a></li>
+          <li><a class="not_button" href="#experience">Experience</a></li>
+          <li><a class="not_button" href="#projects">Projects</a></li>
+          <li><a class="not_button" href="#education">Education</a></li>
+          <li><a class="not_button" href="resources/documents/Lounes-Benali-CV.pdf">Download CV ↗</a></li>
+          <li>
+            <a class="button" href="#contact">
+              <span>Contact</span>
+              <svg class="button_arrow" aria-hidden="true" viewBox="0 0 17.69 17.39">
+                <path class="path_1" d="M8.9 12.4 L8.9 12.4"></path>
+                <path class="path_2" d="M16.2 5 8.9 12.4 1.5 5"></path>
+              </svg>
             </a>
-    </div>
-</div>
-							<!-- <div class="in_animation project" style="opacity: 1; transform: translateY(0px);">
-							    <div class="project_text">
-							        <div class="type">
-							            <span>2025</span>
-							            <span>•</span>
-							            <span>Academic / Personal Project</span>
-							        </div>
-							
-							        <a class="project_title" href="https://github.com/Lounes78/Seenitt" target="_blank">seniT — Glass AI Assistant</a>
-							
-							        <div class="text">
-							            <p>
-							                Architected a real-time computer vision assistant for smart glasses (Meta Ray-Ban / Mentra Live) 
-							                delivering intelligent audio guidance in-ear. Developed under a <b>Mentra grant</b>, the 
-							                system bridges a Kotlin Android client with a Python pipeline (TensorRT, SAM, ONNX). 
-							                Currently optimized for chessboard analysis, with roadmap expansion to universal walking 
-							                cataloging and multi-game support.
-							            </p>
-							        </div>
-							
-							        <div class="tags">
-							            <a href="https://kotlinlang.org/" target="_blank">Kotlin</a>
-							            <a href="https://www.python.org/" target="_blank">Python</a>
-							            <a href="https://onnx.ai/" target="_blank">ONNX</a>
-							            <a target="_blank">TensorRT / SAM</a>
-							            <a href="https://opencv.org/" target="_blank">Classic CV</a>
-							        </div>
-							
-							        <div class="links">
-							            <a class="github" href="https://github.com/Lounes78/Seenitt" target="_blank">
-							                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31">
-							                    <path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08a4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"/>
-							                </svg>
-							                <span class="bubble">See the code</span>
-							            </a>
-							            <a class="test" href="https://mentraglass.com/" target="_blank">
-							                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.09 18.64">
-							                    <path d="M14.55 7.52 4.62 1.78A2.08 2.08 0 0 0 1.5 3.58V15.05a2.08 2.08 0 0 0 3.12 1.8l9.93-5.73A2.08 2.08 0 0 0 14.55 7.52Z"/>
-							                </svg>
-							                <span class="bubble">About Mentra</span>
-							            </a>
-							        </div>
-							    </div>
-							
-							    <div class="project_view">
-							        <a href="https://github.com/Lounes78/Seenitt" target="_blank">
-							            <img src="resources/images/projects/seniT-chess.jpg" alt="seniT AI Chess Assistant" width="1440px" height="810px">
-							            <div><div></div><div></div><div></div><div></div></div>
-							            <img src="resources/images/projects/seniT-chess.jpg" alt="seniT Project Illustration">
-							        </a>
-							    </div>
-							</div>
- -->
+          </li>
+        </ol>
+      </nav>
+    </aside>
 
+    <main id="main">
+      <span id="home" class="anchor_target" aria-hidden="true"></span>
+      <section class="section" id="home_section" aria-labelledby="home_title">
+        <div id="particles" aria-hidden="true"></div>
+        <div class="content">
+          <p class="hi hero_reveal">Hi, my name is</p>
+          <h1 class="name hero_reveal" id="home_title">Lounes Benali.</h1>
+          <p class="title hero_reveal">I work on speech and multimodal AI.</p>
+          <p class="bio hero_reveal">
+            Currently completing an end-of-study research internship at the Institute of Foundation Models,
+            MBZUAI, through August 2026.
+          </p>
+          <div class="hero_actions hero_reveal">
+            <a class="button" href="#about">
+              <span>About me</span>
+              <svg class="button_arrow" aria-hidden="true" viewBox="0 0 17.69 17.39">
+                <path class="path_1" d="M8.9 12.4 L8.9 12.4"></path>
+                <path class="path_2" d="M16.2 5 8.9 12.4 1.5 5"></path>
+              </svg>
+            </a>
+            <a class="home_cv_link" href="resources/documents/Lounes-Benali-CV.pdf">
+              Download CV <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
 
-							
-							<div class="in_animation project inverted" style="opacity: 1; transform: translateY(0px);">
-								<div class="project_text">
-									<div class="type">
-										<span>2025</span>
-										<span>•</span>
-										<span>Corporate Project</span>
-									</div>
-							
-									<span class="project_title">Hume AI car assistant</span>
-							
-									<div class="text">
-										<p>
-											Developed a system-level car assistant by integrating Hume AI with tool
-											calling capabilities to effectively replace Google Assistant. The system
-											controls vehicle hardware, such as opening windows, through empathetic
-											natural language understanding, offering a more human-centric automotive
-											interface.
-										</p>
-									</div>
-							
-									<div class="tags">
-										<a href="https://dev.hume.ai/docs/introduction" target="_blank">Hume AI</a>
-										<a href="https://kotlinlang.org/" target="_blank">Kotlin</a>
-										<a target="_blank">System Integration - Streaming</a>
-									</div>
-							
-									<div class="links">
-										<a class="github" href="https://github.com/Lounes78/hume-kotlin" target="_blank">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31">
-												<path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08a4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"/>
-											</svg>
-											<span class="bubble">See the code</span>
-										</a>
-									
-										<a class="test" href="https://hume.ai" target="_blank">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.09 18.64">
-												<path d="M14.55 7.52 4.62 1.78A2.08 2.08 0 0 0 1.5 3.58V15.05a2.08 2.08 0 0 0 3.12 1.8l9.93-5.73A2.08 2.08 0 0 0 14.55 7.52Z"/>
-											</svg>
-											<span class="bubble">About Hume AI</span>
-										</a>
-									</div>
-								</div>
-							
-								<div class="project_view">
-									<a
-										href="https://github.com/Lounes78/hume-kotlin"
-										target="_blank"
-										style="width: 700px !important; height: 500px !important; pointer-events: none;"
-									>
-										<img src="resources/videos/projects/hume_tool_call.mp4" alt="" />
-							
-										<div><div></div><div></div><div></div><div></div></div>
-							
-										<video
-											loop
-											muted
-											controls
-											preload="metadata"
-											playsinline
-											style="pointer-events: auto;"
-											data-github="https://github.com/Lounes78/hume-kotlin"
-										>
-											<source src="resources/videos/projects/hume_tool_call.mp4" type="video/mp4">
-										</video>
-									</a>
-								</div>
-							</div>
+      <span id="about" class="anchor_target" aria-hidden="true"></span>
+      <section class="section" id="about_section" aria-labelledby="about_title">
+        <div class="content">
+          <h2 class="section_title" id="about_title">About me</h2>
+          <div class="about_content">
+            <div class="p_1">
+              <p>
+                Hi! I’m Lounes. I’m a deep learning engineer working on speech, multimodal AI, and the systems
+                used to train and run models at scale.
+              </p>
+              <p>
+                I studied electronics and computer science at the National Polytechnic School of Algiers,
+                then at Paris-Saclay University, where I graduated top of my class. I’m now finishing a
+                master’s degree in Intelligent Systems Engineering at Sorbonne University.
+              </p>
+              <p>
+                From September 2024 to February 2026, I worked at Ampere / Renault Group on TTS,
+                speech-to-speech, and real-time inference. I’m currently completing my end-of-study research
+                internship at IFM, MBZUAI, focused on multilingual ASR and large-scale GPU workloads.
+              </p>
+            </div>
+            <figure class="photo">
+              <img src="resources/images/lounes.webp" alt="Portrait of Lounes Benali" width="760" height="760">
+            </figure>
+          </div>
 
-							
-							<div class="in_animation project" style="opacity: 1; transform: translateY(0px);">
-								<div class="project_text">
-									<div class="type">
-										<span>2025</span>
-										<span>•</span>
-										<span>Research Project</span>
-									</div>
-									<a class="project_title" href="https://github.com/Lounes78/vision_pr" target="_blank">Pose Estimation</a>
-									<div class="text"><p>Developed a deep learning pipeline for 6-DOF vehicle pose estimation in autonomous driving scenarios. The system uses a hourglass CenterNet architecture with perspective transform for efficiency and extensive data augmentation. The model performs regression of yaw, pitch, roll, and position coordinates, achieving high accuracy through advanced test-time augmentation and post-processing techniques.</p></div>
-									<div class="tags"><a href="https://www.python.org/" target="_blank">Python</a><a href="https://keras.io/" target="_blank">Keras</a><a href="https://www.tensorflow.org/" target="_blank">Deep Learning</a><a href="https://opencv.org/" target="_blank">Computer Vision</a></div>
-									<div class="links">
-										<a class="github" href="https://github.com/Lounes78/vision_pr" target="_blank">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31"><g><path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08 4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"></path></g></svg>
-											<span class="bubble">See the code</span>
-										</a>
-										<a class="test" href="https://en.wikipedia.org/wiki/CenterNet_(object_detection)" target="_blank">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.09 18.64"><g><path d="M14.55 7.52 4.62 1.78A2.08 2.08 0 0 0 1.5 3.58V15.05a2.08 2.08 0 0 0 3.12 1.8l9.93-5.73A2.08 2.08 0 0 0 14.55 7.52Z"></path></g></svg>
-											<span class="bubble">Learn About CenterNet</span>
-										</a>
-									</div>
-								</div>
-								<div class="project_view">
-									<a href="https://github.com/Lounes78/vision_pr" target="_blank">
-										<img src="resources/images/projects/atonomous_PKU.webp" alt="Autonomous Driving Computer Vision" width="1440px" height="810px">
-										<div><div></div><div></div><div></div><div></div></div>
-										<img src="resources/images/projects/atonomous_PKU.webp" alt="Autonomous Driving">
-									</a>
-								</div>
-							</div>
+          <div class="experience_refresh" id="experience">
+            <h2 class="section_title">Experience</h2>
+            <ol class="experience_list">
+              <li class="experience_item experience_item_featured">
+                <div class="experience_meta">
+                  <span>Feb 2026 — Aug 2026 (expected)</span>
+                  <span>Paris, France</span>
+                </div>
+                <h3>Speech AI Research Intern</h3>
+                <a class="experience_org" href="https://ifm.ai/" target="_blank" rel="noreferrer">
+                  Institute of Foundation Models, MBZUAI ↗
+                </a>
+                <p>
+                  Working in a four-person speech team on multilingual ASR centered on Arabic dialects,
+                  across data curation, distributed training, evaluation, and inference. My work includes
+                  Slurm workloads on AMD MI210 and NVIDIA H200 clusters and speech-stack porting to ROCm.
+                </p>
+                <ul class="experience_tags" aria-label="Technologies">
+                  <li>ASR</li><li>PyTorch</li><li>Slurm</li><li>ROCm</li><li>CUDA</li>
+                </ul>
+              </li>
 
-							<div class="in_animation project inverted" style="opacity: 1; transform: translateY(0px);">
-								<div class="project_text">
-									<div class="type">
-										<span>2024</span>
-										<span>•</span>
-										<span>Academic Project</span>
-									</div>
-									<a class="project_title" href="https://github.com/Lounes78/Opti_gen_NSGA2" target="_blank">Power Systems Optimization</a>
-									<div class="text"><p>Implemented multi-objective optimization algorithms (NSGA-II) for railway power system design. The project models battery capacity and power threshold parameters while minimizing voltage drops. The solution uses Monte Carlo simulation and Pareto-optimal analysis to enable data-driven decisions for complex power distribution systems.</p></div>
-									<div class="tags"><a href="https://www.python.org/" target="_blank">Python</a><a href="https://numpy.org/" target="_blank">NumPy</a><a href="https://matplotlib.org/" target="_blank">Matplotlib</a><a href="https://pymoo.org/" target="_blank">Pymoo</a></div>
-									<div class="links">
-										<a class="github" href="https://github.com/Lounes78/Opti_gen_NSGA2" target="_blank">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31"><g><path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08 4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"></path></g></svg>
-											<span class="bubble">See the code</span>
-										</a>
-										<a class="test" href="https://en.wikipedia.org/wiki/NSGA-II" target="_blank">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.09 18.64"><g><path d="M14.55 7.52 4.62 1.78A2.08 2.08 0 0 0 1.5 3.58V15.05a2.08 2.08 0 0 0 3.12 1.8l9.93-5.73A2.08 2.08 0 0 0 14.55 7.52Z"></path></g></svg>
-											<span class="bubble">Learn About NSGA-II</span>
-										</a>
-									</div>
-								</div>
-								<div class="project_view">
-									<a href="https://github.com/Lounes78/Opti_gen_NSGA2" target="_blank">
-										<img src="resources/images/projects/paretoNSGA2.webp" alt="Power Systems Optimization" width="1440px" height="810px">
-										<div><div></div><div></div><div></div><div></div></div>
-										<img src="resources/images/projects/paretoNSGA2.webp" alt="Power Systems">
-									</a>
-								</div>
-							</div>
+              <li class="experience_item experience_item_featured">
+                <div class="experience_meta">
+                  <span>Sep 2024 — Feb 2026</span>
+                  <span>Guyancourt, France</span>
+                </div>
+                <h3>Deep Learning Engineer — Apprentice</h3>
+                <p class="experience_org">Ampere Software Technology / Renault Group</p>
+                <p>
+                  Developed TTS and speech-to-speech systems and built an internal real-time inference
+                  platform serving multiple models, voices, versions, and languages.
+                </p>
+                <ul class="experience_tags" aria-label="Technologies">
+                  <li>TTS</li><li>Speech-to-speech</li><li>Streaming</li><li>Model optimization</li>
+                </ul>
+              </li>
 
-							<div class="in_animation project" style="opacity: 1; transform: translateY(0px);">
-								<div class="project_text">
-									<div class="type">
-										<span>2024</span>
-										<span>•</span>
-										<span>Academic Project</span>
-									</div>
-									<a class="project_title" href="https://github.com/Lounes78/vision_pr" target="_blank">Augmented Reality</a>
-									<div class="text"><p>Implemented a comprehensive camera calibration pipeline to determine intrinsic parameters (matrix K) using manual focus techniques. Developed algorithms for homography calculations, camera pose estimation, and tracking of visual primitives. The project includes detailed error analysis with visualization through error curves and histograms.</p></div>
-									<div class="tags"><a href="https://www.python.org/" target="_blank">Python</a><a href="https://www.mathworks.com/products/matlab.html" target="_blank">MATLAB</a><a href="https://opencv.org/" target="_blank">OpenCV</a></div>
-									<div class="links">
-										<a class="github" href="https://github.com/Lounes78/vision_pr" target="_blank">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31"><g><path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08 4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"></path></g></svg>
-											<span class="bubble">See the code</span>
-										</a>
-										<a class="test" href="https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html" target="_blank">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.09 18.64"><g><path d="M14.55 7.52 4.62 1.78A2.08 2.08 0 0 0 1.5 3.58V15.05a2.08 2.08 0 0 0 3.12 1.8l9.93-5.73A2.08 2.08 0 0 0 14.55 7.52Z"></path></g></svg>
-											<span class="bubble">Camera Calibration Tutorial</span>
-										</a>
-									</div>
-								</div>
-								<div class="project_view">
-									<a href="https://github.com/Lounes78/vision_pr" target="_blank">
-										<img src="resources/images/projects/vision.webp" alt="Camera Calibration" width="1440px" height="810px">
-										<div><div></div><div></div><div></div><div></div></div>
-										<img src="resources/images/projects/vision.webp" alt="Camera Calibration">
-									</a>
-								</div>
-							</div>
+              <li class="experience_item experience_item_compact">
+                <div class="experience_meta"><span>May 2024 — Sep 2024</span><span>Le Bourget, France</span></div>
+                <h3>Technical Staff — Paris 2024 Olympic Games</h3>
+                <p class="experience_org">International Broadcast Center</p>
+                <p>Deployed networked equipment and diagnosed endpoint and network issues for broadcast operations.</p>
+              </li>
 
-							<div class="in_animation project inverted" style="opacity: 1; transform: translateY(0px);">
-								<div class="project_text">
-									<div class="type">
-										<span>2024</span>
-										<span>•</span>
-										<span>Academic Project</span>
-									</div>
-									<a class="project_title" href="https://github.com/Lounes78/SevenCard_Strat" target="_blank">Sevens Card Game Strategy</a>
-									<div class="text"><p>Designed and implemented an advanced AI strategy for the Sevens card game using C++17 with dynamic library loading. The strategy analyzes game state, opponent behavior patterns, and probability distributions to make optimal moves. It outperforms baseline implementations (random and greedy approaches) in tournament play through efficient memory management and optimization techniques.</p></div>
-									<div class="tags"><a href="https://en.cppreference.com/w/cpp/17" target="_blank">C++17</a><a href="https://en.wikipedia.org/wiki/Dynamic_loading" target="_blank">Dynamic Libraries</a><a href="https://en.wikipedia.org/wiki/Game_theory" target="_blank">Game Theory</a></div>
-									<div class="links">
-										<a class="github" href="https://github.com/Lounes78/SevenCard_Strat" target="_blank">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31"><g><path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08a4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"></path></g></svg>
-											<span class="bubble">See the code</span>
-										</a>
-										<a class="test" href="https://en.wikipedia.org/wiki/Sevens_(card_game)" target="_blank">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.09 18.64"><g><path d="M14.55 7.52 4.62 1.78A2.08 2.08 0 0 0 1.5 3.58V15.05a2.08 2.08 0 0 0 3.12 1.8l9.93-5.73A2.08 2.08 0 0 0 14.55 7.52Z"></path></g></svg>
-											<span class="bubble">Learn About Sevens</span>
-										</a>
-									</div>
-								</div>
-								<div class="project_view">
-									<a href="https://github.com/Lounes78/SevenCard_Strat" target="_blank">
-										<img src="resources/images/projects/sevens.webp" alt="Sevens Card Game" width="1440px" height="810px">
-										<div><div></div><div></div><div></div><div></div></div>
-										<img src="resources/images/projects/sevens.webp" alt="Card Game">
-									</a>
-								</div>
-							</div>
+              <li class="experience_item experience_item_compact">
+                <div class="experience_meta"><span>Jul 2023</span><span>Cheraga, Algeria</span></div>
+                <h3>Engineering Intern</h3>
+                <p class="experience_org">Schneider Electric</p>
+                <p>Studied variable-frequency-drive architectures and ML-based control opportunities.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
 
-							<div class="in_animation project" style="opacity: 1; transform: translateY(0px);">
-								<div class="project_text">
-									<div class="type">
-										<span>2024</span>
-										<span>•</span>
-										<span>Personal Project</span>
-									</div>
-									<a class="project_title" href="https://github.com/Lounes78/STEAGNOO---C---webApp-" target="_blank">Steganography in C</a>
-									<div class="text"><p>This project is a steganography tool that hides data in images using the Least Significant Bit (LSB) algorithm. It consists of a C program for encoding and decoding messages and a Flask-based web application for a user-friendly interface (hosted on Google Cloud)...
-										<br>
-    								<p>On Air:  <a href="https://hardy-chamois-tight.ngrok-free.app" style="color: rgb(255, 255, 255);">STEAGNOO -- C --</a></p>
-										
+      <div class="section_end about_end" aria-hidden="true"></div>
 
-									</p></div>
-									<div class="tags"><a href="https://www.python.org/" target="_blank">Python</a><a href="https://en.cppreference.com/w/c/language" target="_blank">C</a>
-										<a href="https://www.python.org/" target="_blank">JavaScript</a> <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript" target="_blank">HTML</a> <a href="https://www.w3.org/TR/CSS/#css" target="_blank">CSS</a>
-									</div>
-									<div class="links">
-										<a class="github" href="https://github.com/Lounes78/STEAGNOO---C---webApp-" target="_blank">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31"><g><path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08 4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"></path></g></svg>
-											<span class="bubble">See the code</span>
-										</a>
-										
-										
-									</div>
-								</div>
-								
-	
-	
-	
-								<div class="project_view">
-									<a href="https://github.com/Lounes78/STEAGNOO---C---webApp-" target="_blank">
-										<img src="resources/images/projects/STEGANOO__C__.webp" alt="Steaganography in C" width="1440px" height="810px">
-										
-										<div><div></div><div></div><div></div><div></div></div>
-										<img src="resources/videos/projects/STEAGNOO__C__.webp" alt="">
-										</video>									
-									</a>
-								</div>
-							</div>
-						<div class="in_animation project inverted" style="opacity: 1; transform: translateY(0px);">
-							<div class="project_text">
-								<div class="type">
-									<span>2023</span>
-									<span>•</span>
-									<span>Personal Project</span>
-								</div>
-								<a class="project_title" href="https://github.com/Lounes78/Siamese-NN-for-Face-Recognition" target="_blank">Siamese Neural Network</a>
-								<div class="text"><p>My goal throw this project is to go from a research paper (Siamese Neural Networks for One-shot Image Recognition) all the way to a complete functionning application for Facial Recognition...</p></div>
-								<div class="tags"><a href="https://www.python.org/" target="_blank">Python</a><a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a></div>
-								<div class="links">
-									<a class="github" href="https://github.com/Lounes78/Siamese-NN-for-Face-Recognition" target="_blank">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31"><g><path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08 4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"></path></g></svg>
-										<span class="bubble">See the code</span>
-									</a>
-									<a class="test" href="https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf" target="_blank">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.09 18.64"><g><path d="M14.55 7.52 4.62 1.78A2.08 2.08 0 0 0 1.5 3.58V15.05a2.08 2.08 0 0 0 3.12 1.8l9.93-5.73A2.08 2.08 0 0 0 14.55 7.52Z"></path></g></svg>
-										<span class="bubble">See the Research Paper</span>
-									</a>	
-								</div>
-							</div>
-							<div class="project_view">
-								<a href="https://github.com/Lounes78/Siamese-NN-for-Face-Recognition" target="_blank">
-									<img src="resources/images/projects/img1.webp" alt="Facial Recognition with Siamese NN" width="1440px" height="810px">
-									
-									<div><div></div><div></div><div></div><div></div></div>
-									<img src="resources/videos/projects/img1.webp" alt="">
-									</video>									
-								</a>
-							</div>
-						</div>
-						<div class="in_animation project" style="opacity: 1; transform: translateY(0px);">
-							<div class="project_text">
-								<div class="type">
-									<span>2023</span>
-									<span>•</span>
-									<span>Personal Project</span>
-								</div>
-								<a class="project_title" href="https://github.com/Lounes78/Digit-Recognition-model-without-using-TensorFlow" target="_blank">Neural Network from scratch</a>
-								<div class="text"><p>The purpose of this project is to demonstrate a minimalistic neural network implementation for recognizing handwritten digits. It serves as an educational example for those, like me, are interested in understanding the core concepts of 
-									neural networks and deep learning. It is coded just using basic Linear Algebra without using any ML framework....</p></div>
-								<div class="tags"><a href="https://www.python.org/" target="_blank">Python</a></div>
-								<div class="links">
-									<a class="github" href="https://github.com/Lounes78/Digit-Recognition-model-without-using-TensorFlow" target="_blank">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31"><g><path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08 4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"></path></g></svg>
-										<span class="bubble">See the code</span>
-									</a>
-								</div>
-							</div>
-							<div class="project_view">
-								<a href="https://github.com/Lounes78/Siamese-NN-for-Face-Recognition" target="_blank">
-									<img src="resources/images/projects/Neural_network.webp" alt="Facial Recognition with Siamese NN" width="1440px" height="810px">
-									
-									<div><div></div><div></div><div></div><div></div></div>
-									<img src="resources/videos/projects/Neural_network.webp" alt="">
-									</video>									
-								</a>
-							</div>
-						</div>
-						<div class="in_animation project inverted" style="opacity: 1; transform: translateY(0px);">
-							<div class="project_text">
-								<div class="type">
-									<span>2023</span>
-									<span>•</span>
-									<span>School Project</span>
-								</div>
-								<a class="project_title" href="https://github.com/Lounes78/CORDIC-VHDL-NEXYS2" target="_blank">CORDIC Implementation on FPGA</a>
-								<div class="text"><p>I implemented the CORDIC Algorithm on a Digilent Nexys 2 FPGA development board using a hardware description language (VHDL).</p></div>
-								<div class="tags"><a href="https://ieeexplore.ieee.org/document/8938196" target="_blank">VHDL</a></div>
-								<div class="links">
-									<a class="github" href="https://github.com/Lounes78/CORDIC-VHDL-NEXYS2" target="_blank">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31"><g><path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08 4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"></path></g></svg>
-										<span class="bubble">See the code</span>
-									</a>
-									<a class="test" href="https://en.wikipedia.org/wiki/CORDIC" target="_blank">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.09 18.64"><g><path d="M14.55 7.52 4.62 1.78A2.08 2.08 0 0 0 1.5 3.58V15.05a2.08 2.08 0 0 0 3.12 1.8l9.93-5.73A2.08 2.08 0 0 0 14.55 7.52Z"></path></g></svg>
-										<span class="bubble">CORDIC - Wikipedia</span>
-									</a>
-								</div>
-							</div>
-							<div class="project_view">
-								<a href="https://github.com/Lounes78/CORDIC-VHDL-NEXYS2" target="_blank">
-									<img src="resources\images\projects\crdic.webp" alt="Coridic - FPGA - VHDL" width="1440px" height="810px">
-									
-									<div><div></div><div></div><div></div><div></div></div>
-									<video loop="" muted="" preload="metadata">
-										<source src="resources/videos/projects/cordic.mp4" type="video/mp4">
-									</video>	
-								</a>
-							</div>
-						</div>
-						<div class="in_animation project" style="opacity: 1; transform: translateY(0px);">
-							<div class="project_text">
-								<div class="type">
-									<span>2023</span>
-									<span>•</span>
-									<span>Personal Project</span>
-								</div>
-								<a class="project_title" href="https://github.com/Lounes78/Hanoi-Tower-Animation" target="_blank">Hanoi Tower Animation - C - SDL</a>
-								<div class="text"><p>I used the SDL library to animate the resolution of the very famous Hanoi Tower problem solved recursively in C ...</p></div>
-								<div class="tags"><a href="https://en.cppreference.com/w/c/language" target="_blank">C</a><a href="https://www.libsdl.org/" target="_blank">SDL</a></div>
-								<div class="links">
-									<a class="github" href="https://github.com/Lounes78/Hanoi-Tower-Animation" target="_blank">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.05 20.31"><g><path d="M7.26 16.34c-4.11 1.23-4.11-2.06-5.76-2.47M13 18.81V15.62a2.78 2.78 0 0 0-.77-2.15c2.59-.28 5.3-1.26 5.3-5.76a4.46 4.46 0 0 0-1.23-3.08 4.18 4.18 0 0 0-.08-3.11s-1-.29-3.22 1.22a11 11 0 0 0-5.76 0C5 1.23 4 1.52 4 1.52A4.18 4.18 0 0 0 4 4.63 4.48 4.48 0 0 0 2.73 7.74c0 4.46 2.72 5.44 5.31 5.76a2.8 2.8 0 0 0-.78 2.12v3.19"></path></g></svg>
-										<span class="bubble">See the code</span>
-									</a>
-								
-								</div>
-							</div>
-							<div class="project_view">
-								<a href="https://github.com/Lounes78/Hanoi-Tower-Animation" target="_blank">
-									<img src="resources/images/projects/towers-of-hanoi.webp" alt="Hanoi Tower Animated" width="1440px" height="810px">
-									
-									<div><div></div><div></div><div></div><div></div></div>
-									<img src="resources/images/projects/towers-of-hanoi.webp" alt="Hanoi Tower Animated">
-									</video>									
-								</a>
-							</div>
+      <span id="projects" class="anchor_target" aria-hidden="true"></span>
+      <section class="section" id="projects_section" aria-labelledby="projects_title">
+        <div class="content leaning">
+          <h2 class="section_title" id="projects_title">Selected projects</h2>
 
-						</div>
-			</section>
-			
-			<div class="section_end projects_end"></div>
+          <div class="projects_content">
+            <article class="project">
+              <div class="project_text">
+                <div class="type"><span>2025 — 2026</span><span>•</span><span>MentraOS grant project</span></div>
+                <h3><a class="project_title" href="https://github.com/B-Lounes/Seenitt" target="_blank" rel="noreferrer">Seenitt — Visual AI for Smart Glasses</a></h3>
+                <div class="text">
+                  <p>
+                    Built a Python WebSocket backend that decodes a live H.264 smart-glasses feed. The chess
+                    assistant uses SAM 3, TensorRT/PyCUDA, OpenCV, and optical flow to reconstruct and track a
+                    9×9 board grid, stabilize legal positions, and return FEN updates with Stockfish suggestions.
+                  </p>
+                </div>
+                <div class="tags">
+                  <span>Python</span><span>SAM 3</span><span>TensorRT</span><span>OpenCV</span><span>WebSockets</span>
+                </div>
+                <div class="links">
+                  <a class="project_action" href="https://github.com/B-Lounes/Seenitt" target="_blank" rel="noreferrer">GitHub ↗</a>
+                  <a class="project_action" href="https://mentraglass.com/" target="_blank" rel="noreferrer">Mentra ↗</a>
+                </div>
+              </div>
+              <figure class="project_view">
+                <a href="https://github.com/B-Lounes/Seenitt" target="_blank" rel="noreferrer" aria-label="Open the Seenitt GitHub repository">
+                  <img src="resources/images/projects/seniT-chess.jpg" alt="Seenitt detecting a physical chessboard and its pieces" width="636" height="481">
+                </a>
+              </figure>
+            </article>
 
-				<link rel="stylesheet" type="text/css" href="css/contact.css"/>
+            <article class="project inverted">
+              <div class="project_text">
+                <div class="type"><span>2025</span><span>•</span><span>Android prototype</span></div>
+                <h3><a class="project_title" href="https://github.com/B-Lounes/hume-kotlin" target="_blank" rel="noreferrer">Real-time Hume Voice Integration</a></h3>
+                <div class="text">
+                  <p>
+                    Built a Kotlin Android prototype integrating Hume EVI with bidirectional audio streaming,
+                    interruption handling, emotion data, lifecycle recovery, and tool calls for vehicle actions.
+                  </p>
+                </div>
+                <div class="tags">
+                  <span>Kotlin</span><span>Android</span><span>WebSockets</span><span>Streaming audio</span>
+                </div>
+                <div class="links">
+                  <a class="project_action" href="https://github.com/B-Lounes/hume-kotlin" target="_blank" rel="noreferrer">GitHub ↗</a>
+                </div>
+              </div>
+              <figure class="project_view">
+                <div class="project_media portrait_media">
+                  <video muted loop controls playsinline preload="metadata" poster="resources/images/projects/hume-voice-poster.webp" aria-label="Hume voice integration tool-call demonstration">
+                    <source src="resources/videos/projects/hume_tool_call.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </figure>
+            </article>
 
-				<a id="contact"></a>
-				<section class="section" id="contact_section">
-					<div class="content leaning">
-						<span class="section_title">How to contact me?</span>
-						<div class="contact_content">
-							<div class="social_line">
-								<a class="social_link" href="https://www.linkedin.com/in/lounes-benali-b0b022209/" target="_blank" style="--size: 119.13px;">
-									<img src="resources/svgs/contact/Linkedin.svg" alt="linkedin" width="50px" height="50px"/>
-									<div class="social_text">
-										<span>lounes-benali</span>
-									</div>
-								</a>
-							</div>
+            <article class="project">
+              <div class="project_text">
+                <div class="type"><span>2025</span><span>•</span><span>Computer vision project</span></div>
+                <h3><span class="project_title">6-DoF Vehicle Pose Estimation</span></h3>
+                <div class="text">
+                  <p>
+                    Developed an hourglass CenterNet pipeline for vehicle orientation and position estimation,
+                    with geometry-aware augmentation, camera calibration, homography, visual tracking,
+                    test-time augmentation, model blending, and quantitative error analysis.
+                  </p>
+                </div>
+                <div class="tags">
+                  <span>PyTorch</span><span>CenterNet</span><span>OpenCV</span><span>MATLAB</span>
+                </div>
+              </div>
+              <figure class="project_view contain">
+                <div class="project_media">
+                  <img src="resources/images/projects/atonomous_PKU.webp" alt="CenterNet architecture and colored vehicle pose predictions" width="875" height="685" loading="lazy">
+                </div>
+              </figure>
+            </article>
 
-							<div class="social_line">
-								<a class="social_link" href="https://github.com/Lounes78" target="_blank" style="--size: 90.65px;">
-									<img src="resources/svgs/contact/GitHub.svg" alt="github" width="50px" height="50px"/>
-									<div class="social_text">
-										<span>lounes78</span>
-									</div>
-								</a>
-								
-							</div>
-							<div class="social_line">
-								<div class="social_link" style="--size: 202.84px;">
-									<a href="mailto: lounesbenali.2@gmail.com" target="_blank">
-										<img src="resources/svgs/contact/Mail.svg" alt="mail" width="50px" height="50px"/>
-									</a>
-									<div class="social_text">
-										<span>lounesbenali.2@gmail.com</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+            <article class="project inverted">
+              <div class="project_text">
+                <div class="type"><span>2024</span><span>•</span><span>Optimization project</span></div>
+                <h3><a class="project_title" href="https://github.com/B-Lounes/Opti_gen_NSGA2" target="_blank" rel="noreferrer">Railway Power-System Optimization</a></h3>
+                <div class="text">
+                  <p>
+                    Used NSGA-II and Monte Carlo simulation to compare railway battery capacity, power
+                    thresholds, cost, and voltage-drop trade-offs through a Pareto-optimal design surface.
+                  </p>
+                </div>
+                <div class="tags">
+                  <span>Python</span><span>NSGA-II</span><span>Monte Carlo</span><span>Pymoo</span>
+                </div>
+                <div class="links">
+                  <a class="project_action" href="https://github.com/B-Lounes/Opti_gen_NSGA2" target="_blank" rel="noreferrer">GitHub ↗</a>
+                </div>
+              </div>
+              <figure class="project_view contain">
+                <a href="https://github.com/B-Lounes/Opti_gen_NSGA2" target="_blank" rel="noreferrer" aria-label="Open the railway power-system optimization repository">
+                  <img src="resources/images/projects/paretoNSGA2.webp" alt="Pareto plot of battery capacity and maximum voltage drop" width="894" height="576" loading="lazy">
+                </a>
+              </figure>
+            </article>
+          </div>
 
-				<link rel="stylesheet" type="text/css" href="css/footer.css"/>
+          <div class="more_work_heading">
+            <h3>More work</h3>
+            <a href="https://github.com/B-Lounes" target="_blank" rel="noreferrer">All GitHub repositories ↗</a>
+          </div>
 
-				<footer class="section" id="footer_section">
-					<div class="content">
-						<div class="footer_content">
-							
-						</div>
-						<div class="footer_content">
-							<p>
+          <div class="other_projects_content">
+            <article class="other_project">
+              <div class="other_project_content">
+                <div class="header">
+                  <div class="logos">
+                    <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/k2-rocm" target="_blank" rel="noreferrer">GitHub ↗</a>
+                  </div>
+                  <h3><a class="project_title" href="https://github.com/B-Lounes/k2-rocm" target="_blank" rel="noreferrer">GPU Speech Infrastructure</a></h3>
+                  <p class="text">ROCm and CUDA speech stacks, including an experimental k2 HIP/ROCm port, batched GPU VAD, and recoverable Slurm inference workflows.</p>
+                </div>
+                <div class="tags"><span>ROCm</span><span>CUDA</span><span>k2</span><span>vLLM</span><span>Slurm</span></div>
+              </div>
+            </article>
 
-							</p>
-						</div>
-					</div>
-				</footer>
-			</main>
-		</div>
-	</body>
+            <article class="other_project">
+              <div class="other_project_content">
+                <div class="header">
+                  <div class="logos"><img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45"></div>
+                  <h3><span class="project_title">Conversational AI &amp; Synthetic Speech</span></h3>
+                  <p class="text">A multi-agent real-time voice platform exporting aligned transcripts, speaker-separated 24 kHz PCM audio, turn annotations, and metadata for speech training.</p>
+                </div>
+                <div class="tags"><span>Python</span><span>TypeScript</span><span>PCM audio</span><span>WebSockets</span></div>
+              </div>
+            </article>
+
+            <article class="other_project">
+              <div class="other_project_content">
+                <div class="header">
+                  <div class="logos">
+                    <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/CORDIC-VHDL-NEXYS2" target="_blank" rel="noreferrer">GitHub ↗</a>
+                  </div>
+                  <h3><a class="project_title" href="https://github.com/B-Lounes/CORDIC-VHDL-NEXYS2" target="_blank" rel="noreferrer">CORDIC Accelerator on FPGA</a></h3>
+                  <p class="text">A VHDL implementation of the shift-add CORDIC algorithm on a Digilent Nexys 2 / Xilinx Spartan-3E board.</p>
+                </div>
+                <div class="tags"><span>VHDL</span><span>FPGA</span><span>Digital hardware</span></div>
+              </div>
+            </article>
+
+            <article class="other_project">
+              <div class="other_project_content">
+                <div class="header">
+                  <div class="logos">
+                    <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/vision_pr" target="_blank" rel="noreferrer">GitHub ↗</a>
+                  </div>
+                  <h3><a class="project_title" href="https://github.com/B-Lounes/vision_pr" target="_blank" rel="noreferrer">Camera Calibration &amp; Augmented Reality</a></h3>
+                  <p class="text">Camera calibration, homography, pose estimation, visual tracking, and quantitative error analysis.</p>
+                </div>
+                <div class="tags"><span>Python</span><span>MATLAB</span><span>OpenCV</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="section_end projects_end" aria-hidden="true"></div>
+
+      <span id="education" class="anchor_target" aria-hidden="true"></span>
+      <section class="section" id="education_section" aria-labelledby="education_title">
+        <div class="content leaning">
+          <h2 class="section_title" id="education_title">Education &amp; recognition</h2>
+          <div class="education_layout">
+            <ol class="education_list">
+              <li>
+                <span class="education_date">Sep 2024 — Present</span>
+                <h3>Master’s in Intelligent Systems Engineering</h3>
+                <p>Sorbonne University · Paris, France</p>
+                <small>Final year in progress.</small>
+              </li>
+              <li>
+                <span class="education_date">Sep 2023 — May 2024</span>
+                <h3>Bachelor’s in Electrical Engineering and Computer Science</h3>
+                <p>Paris-Saclay University · Paris, France</p>
+                <small>Graduated top of the class.</small>
+              </li>
+              <li>
+                <span class="education_date">Sep 2022 — Jun 2023</span>
+                <h3>Engineering Cycle — Electronics Engineering and Computer Science</h3>
+                <p>National Polytechnic School of Algiers · Algiers, Algeria</p>
+              </li>
+              <li>
+                <span class="education_date">Sep 2020 — Jun 2022</span>
+                <h3>Preparatory Classes in Science and Technology</h3>
+                <p>National competitive-exam program · Algeria</p>
+                <small>Ranked 29th of 1,576 candidates in the national engineering-school entrance examination.</small>
+              </li>
+            </ol>
+
+            <aside class="language_card" aria-labelledby="languages_title">
+              <h3 id="languages_title">Languages</h3>
+              <dl>
+                <div><dt>Berber</dt><dd>Native</dd></div>
+                <div><dt>French</dt><dd>DALF C2</dd></div>
+                <div><dt>English</dt><dd>Fluent</dd></div>
+                <div><dt>Arabic</dt><dd>Fluent</dd></div>
+              </dl>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <span id="contact" class="anchor_target" aria-hidden="true"></span>
+      <section class="section" id="contact_section" aria-labelledby="contact_title">
+        <div class="content leaning">
+          <h2 class="section_title" id="contact_title">Contact</h2>
+          <div class="contact_content">
+            <div class="social_line">
+              <a class="social_link" href="https://www.linkedin.com/in/lounes-benali-b0b022209/" target="_blank" rel="noreferrer" style="--size: 119.13px;">
+                <img src="resources/svgs/contact/Linkedin.svg" alt="" width="50" height="50">
+                <span class="social_text"><span>lounes.benali</span></span>
+              </a>
+            </div>
+            <div class="social_line">
+              <a class="social_link" href="https://github.com/B-Lounes" target="_blank" rel="noreferrer" style="--size: 90.65px;">
+                <img src="resources/svgs/contact/GitHub.svg" alt="" width="50" height="50">
+                <span class="social_text"><span>B-Lounes</span></span>
+              </a>
+            </div>
+            <div class="social_line">
+              <a class="social_link" href="mailto:lounesbenali.2@gmail.com" style="--size: 202.84px;">
+                <img src="resources/svgs/contact/Mail.svg" alt="" width="50" height="50">
+                <span class="social_text"><span>lounesbenali.2@gmail.com</span></span>
+              </a>
+            </div>
+            <div class="social_line">
+              <a class="social_link cv_social_link" href="resources/documents/Lounes-Benali-CV.pdf" style="--size: 112px;">
+                <span class="social_icon" aria-hidden="true">CV</span>
+                <span class="social_text"><span>Download CV</span></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="section" id="footer_section">
+        <div class="content">
+          <div class="footer_content">
+            <p>© 2026 Lounes Benali</p>
+            <nav aria-label="Footer links">
+              <a href="https://github.com/B-Lounes" target="_blank" rel="noreferrer"><span>GitHub ↗</span></a>
+              <a href="https://www.linkedin.com/in/lounes-benali-b0b022209/" target="_blank" rel="noreferrer"><span>LinkedIn ↗</span></a>
+              <a href="resources/documents/Lounes-Benali-CV.pdf"><span>CV ↗</span></a>
+            </nav>
+          </div>
+          <div class="footer_content">
+            <p>Speech · Multimodal AI · Large-scale training &amp; inference</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>

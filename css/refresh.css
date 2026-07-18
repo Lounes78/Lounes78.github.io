@@ -277,6 +277,19 @@ body.menu_open #menu_backdrop
 	height: auto;
 }
 
+#particles
+{
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.45s ease;
+}
+
+#particles.is_ready
+{
+	opacity: 1;
+	pointer-events: all;
+}
+
 #home_section .content
 {
 	min-height: 100svh;

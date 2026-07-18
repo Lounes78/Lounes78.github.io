@@ -33,6 +33,11 @@ function home_events()
 		particleInstance = window.pJSDom[window.pJSDom.length - 1];
 		movementEnabled = particleInstance.pJS.particles.move.enable;
 		syncParticleMotion();
+
+		window.requestAnimationFrame(() =>
+		{
+			window.requestAnimationFrame(() => particleContainer.classList.add('is_ready'));
+		});
 	});
 
 	if ('IntersectionObserver' in window)

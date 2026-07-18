@@ -294,6 +294,33 @@
 
             <article class="project inverted">
               <div class="project_text">
+                <div class="type"><span>2026</span><span>•</span><span>Experimental open-source port</span></div>
+                <h3><a class="project_title" href="https://github.com/B-Lounes/k2-rocm" target="_blank" rel="noreferrer">k2 on AMD GPUs — HIP/ROCm Port</a></h3>
+                <div class="text">
+                  <p>
+                    Adapted upstream k2’s CUDA-oriented C++ and PyTorch extension stack for HIP/ROCm,
+                    adding ROCm-aware build paths, compatibility shims, and CUB/rocPRIM fixes. Selected FSA
+                    operations and autograd were validated on an AMD MI210; the largest reported CPU/ROCm
+                    absolute difference was about 6×10⁻⁷.
+                  </p>
+                </div>
+                <div class="tags">
+                  <span>C++</span><span>HIP/ROCm</span><span>PyTorch</span><span>CMake</span><span>FSA/FST</span>
+                </div>
+                <div class="links">
+                  <a class="project_action" href="https://github.com/B-Lounes/k2-rocm" target="_blank" rel="noreferrer">GitHub ↗</a>
+                  <a class="project_action" href="https://github.com/k2-fsa/k2" target="_blank" rel="noreferrer">Upstream k2 ↗</a>
+                </div>
+              </div>
+              <figure class="project_view">
+                <a href="https://github.com/B-Lounes/k2-rocm" target="_blank" rel="noreferrer" aria-label="Open the k2 ROCm port GitHub repository">
+                  <img src="resources/images/projects/k2-rocm-architecture.svg" alt="Architecture flow from the CUDA-oriented k2 stack through HIP and rocPRIM compatibility layers to AMD MI210 validation" width="1600" height="1000" loading="lazy">
+                </a>
+              </figure>
+            </article>
+
+            <article class="project">
+              <div class="project_text">
                 <div class="type"><span>2025</span><span>•</span><span>Android prototype</span></div>
                 <h3><a class="project_title" href="https://github.com/B-Lounes/hume-kotlin" target="_blank" rel="noreferrer">Real-time Hume Voice Integration</a></h3>
                 <div class="text">
@@ -318,7 +345,7 @@
               </figure>
             </article>
 
-            <article class="project">
+            <article class="project inverted">
               <div class="project_text">
                 <div class="type"><span>2025</span><span>•</span><span>Computer vision project</span></div>
                 <h3><span class="project_title">6-DoF Vehicle Pose Estimation</span></h3>
@@ -340,7 +367,7 @@
               </figure>
             </article>
 
-            <article class="project inverted">
+            <article class="project">
               <div class="project_text">
                 <div class="type"><span>2024</span><span>•</span><span>Optimization project</span></div>
                 <h3><a class="project_title" href="https://github.com/B-Lounes/Opti_gen_NSGA2" target="_blank" rel="noreferrer">Railway Power-System Optimization</a></h3>
@@ -376,7 +403,7 @@
                 <div class="header">
                   <div class="logos">
                     <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
-                    <a class="compact_repo_link" href="https://github.com/B-Lounes/k2-rocm" target="_blank" rel="noreferrer">GitHub ↗</a>
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/k2-rocm" target="_blank" rel="noreferrer" aria-label="Open GPU Speech Infrastructure on GitHub">GitHub ↗</a>
                   </div>
                   <h3><a class="project_title" href="https://github.com/B-Lounes/k2-rocm" target="_blank" rel="noreferrer">GPU Speech Infrastructure</a></h3>
                   <p class="text">ROCm and CUDA speech stacks, including an experimental k2 HIP/ROCm port, batched GPU VAD, and recoverable Slurm inference workflows.</p>
@@ -401,7 +428,63 @@
                 <div class="header">
                   <div class="logos">
                     <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
-                    <a class="compact_repo_link" href="https://github.com/B-Lounes/CORDIC-VHDL-NEXYS2" target="_blank" rel="noreferrer">GitHub ↗</a>
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/fsmn-vad-pipeline" target="_blank" rel="noreferrer" aria-label="Open Batched FSMN-VAD on ROCm on GitHub">GitHub ↗</a>
+                  </div>
+                  <h3><a class="project_title" href="https://github.com/B-Lounes/fsmn-vad-pipeline" target="_blank" rel="noreferrer">Batched FSMN-VAD on ROCm</a></h3>
+                  <p class="text">Re-engineered FunASR FSMN-VAD for length-aware batched ROCm inference while preserving its checkpoint and segmentation contracts. A historical eight-MI210 run recorded 9,668 RTFx, with all 32,794 paired boundaries within 10 ms.</p>
+                </div>
+                <div class="tags"><span>ROCm</span><span>PyTorch</span><span>FSMN</span><span>Shared memory</span><span>PostgreSQL</span></div>
+              </div>
+            </article>
+
+            <article class="other_project">
+              <div class="other_project_content">
+                <div class="header">
+                  <div class="logos">
+                    <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/x-model-streaming" target="_blank" rel="noreferrer" aria-label="Open Streaming ASR Gateway on GitHub">GitHub ↗</a>
+                  </div>
+                  <h3><a class="project_title" href="https://github.com/B-Lounes/x-model-streaming" target="_blank" rel="noreferrer">Streaming ASR Gateway</a></h3>
+                  <p class="text">Built a WebSocket gateway around a stateless ASR backend with causal VAD, Arabic-aware stabilization, final-first scheduling, endpoint leases, backpressure, and bounded recovery. Public suite: 316 tests; historical live validation: 16/16 concurrent sessions.</p>
+                </div>
+                <div class="tags"><span>Python</span><span>WebSockets</span><span>ASR</span><span>VAD</span><span>Distributed systems</span></div>
+              </div>
+            </article>
+
+            <article class="other_project">
+              <div class="other_project_content">
+                <div class="header">
+                  <div class="logos">
+                    <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/ctc-forced-aligner" target="_blank" rel="noreferrer" aria-label="Open Arabic CTC Forced Alignment on GitHub">GitHub ↗</a>
+                  </div>
+                  <h3><a class="project_title" href="https://github.com/B-Lounes/ctc-forced-aligner" target="_blank" rel="noreferrer">Arabic CTC Forced Alignment</a></h3>
+                  <p class="text">Built a resumable Arabic CTC alignment pipeline with duration-balanced tar sharding, torn-write recovery, duplicate suppression, strict merge gates, and atomic publication. A historical internal run processed 4.21 million clips.</p>
+                </div>
+                <div class="tags"><span>XLS-R</span><span>PyTorch</span><span>CTC</span><span>Slurm</span><span>Parquet</span></div>
+              </div>
+            </article>
+
+            <article class="other_project">
+              <div class="other_project_content">
+                <div class="header">
+                  <div class="logos">
+                    <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/dialect-id" target="_blank" rel="noreferrer" aria-label="Open Arabic Dialect Identification on GitHub">GitHub ↗</a>
+                  </div>
+                  <h3><a class="project_title" href="https://github.com/B-Lounes/dialect-id" target="_blank" rel="noreferrer">Arabic Dialect Identification</a></h3>
+                  <p class="text">Developed a distributed Arabic dialect-identification toolkit with multiple speech encoders, pseudo-label mixing, full-audio chunk aggregation, calibration, release gates, checkpoint migration, and auditable label export across a fixed 23-label space.</p>
+                </div>
+                <div class="tags"><span>Speech classification</span><span>PyTorch</span><span>DDP</span><span>Calibration</span><span>Slurm</span></div>
+              </div>
+            </article>
+
+            <article class="other_project">
+              <div class="other_project_content">
+                <div class="header">
+                  <div class="logos">
+                    <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/CORDIC-VHDL-NEXYS2" target="_blank" rel="noreferrer" aria-label="Open CORDIC Accelerator on FPGA on GitHub">GitHub ↗</a>
                   </div>
                   <h3><a class="project_title" href="https://github.com/B-Lounes/CORDIC-VHDL-NEXYS2" target="_blank" rel="noreferrer">CORDIC Accelerator on FPGA</a></h3>
                   <p class="text">A VHDL implementation of the shift-add CORDIC algorithm on a Digilent Nexys 2 / Xilinx Spartan-3E board.</p>
@@ -415,7 +498,7 @@
                 <div class="header">
                   <div class="logos">
                     <img src="resources/svgs/projects/Folder.svg" alt="" width="45" height="45">
-                    <a class="compact_repo_link" href="https://github.com/B-Lounes/vision_pr" target="_blank" rel="noreferrer">GitHub ↗</a>
+                    <a class="compact_repo_link" href="https://github.com/B-Lounes/vision_pr" target="_blank" rel="noreferrer" aria-label="Open Camera Calibration and Augmented Reality on GitHub">GitHub ↗</a>
                   </div>
                   <h3><a class="project_title" href="https://github.com/B-Lounes/vision_pr" target="_blank" rel="noreferrer">Camera Calibration &amp; Augmented Reality</a></h3>
                   <p class="text">Camera calibration, homography, pose estimation, visual tracking, and quantitative error analysis.</p>

@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title description">
+  <title id="title">k2 to ROCm porting architecture</title>
+  <desc id="description">A four-stage pipeline from the CUDA-oriented k2 stack through a HIP compatibility and CMake layer, rocPRIM and PyTorch ROCm, to validation on an AMD MI210 GPU.</desc>
+
+  <defs>
+    <linearGradient id="background" x1="100" y1="20" x2="1500" y2="980" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#101d30"/>
+      <stop offset="0.54" stop-color="#07111f"/>
+      <stop offset="1" stop-color="#0b1829"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="195" y1="190" x2="1415" y2="910" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14263d"/>
+      <stop offset="1" stop-color="#0c1829"/>
+    </linearGradient>
+    <linearGradient id="destination" x1="195" y1="760" x2="1415" y2="910" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#102f4a"/>
+      <stop offset="1" stop-color="#0c1b32"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#56dcfc"/>
+      <stop offset="1" stop-color="#197dff"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#8ea9bf" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M1 1l10 5-10 5z" fill="#56dcfc"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1000" rx="36" fill="url(#background)"/>
+  <rect width="1600" height="1000" rx="36" fill="url(#grid)"/>
+  <path d="M1120-30C1290 125 1370 315 1640 365" fill="none" stroke="#197dff" stroke-opacity="0.08" stroke-width="110"/>
+  <path d="M-80 830C210 710 360 920 610 1040" fill="none" stroke="#56dcfc" stroke-opacity="0.045" stroke-width="150"/>
+
+  <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <g transform="translate(96 70)">
+      <rect width="14" height="54" rx="7" fill="url(#accent)"/>
+      <text x="38" y="22" fill="#8ea9bf" font-size="22" font-weight="700" letter-spacing="5">GPU PORTING PIPELINE</text>
+      <text x="38" y="63" fill="#f6f9fc" font-size="40" font-weight="760">k2 <tspan fill="#56dcfc">→</tspan> ROCm</text>
+    </g>
+
+    <g transform="translate(862 66)" font-size="23" font-weight="700" text-anchor="middle">
+      <g>
+        <rect width="168" height="50" rx="25" fill="#56dcfc" fill-opacity="0.1" stroke="#56dcfc" stroke-opacity="0.6"/>
+        <circle cx="28" cy="25" r="5" fill="#56dcfc"/>
+        <text x="97" y="33" fill="#d8f7ff">ROCm 6.3</text>
+      </g>
+      <g transform="translate(184)">
+        <rect width="138" height="50" rx="25" fill="#197dff" fill-opacity="0.12" stroke="#197dff" stroke-opacity="0.72"/>
+        <circle cx="27" cy="25" r="5" fill="#4ea4ff"/>
+        <text x="82" y="33" fill="#e5f1ff">MI210</text>
+      </g>
+      <g transform="translate(338)">
+        <rect width="340" height="50" rx="25" fill="#56dcfc" fill-opacity="0.1" stroke="#56dcfc" stroke-opacity="0.6"/>
+        <path d="M24 25l8 8 16-18" fill="none" stroke="#56dcfc" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="194" y="32" fill="#d8f7ff" font-size="20">max reported |Δ| ≈ 6×10⁻⁷</text>
+      </g>
+    </g>
+
+    <!-- Flow rail -->
+    <path d="M130 263V842" fill="none" stroke="#56dcfc" stroke-opacity="0.22" stroke-width="18" stroke-linecap="round"/>
+    <path d="M130 263V835" fill="none" stroke="#56dcfc" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+    <!-- Stage 01 -->
+    <g transform="translate(190 195)">
+      <rect width="1220" height="145" rx="24" fill="url(#panel)" stroke="#8ea9bf" stroke-opacity="0.16" stroke-width="2"/>
+      <rect width="8" height="145" rx="4" fill="#56dcfc"/>
+      <path d="M0 24a24 24 0 0124-24h180v145H24A24 24 0 010 121z" fill="#56dcfc" fill-opacity="0.035"/>
+      <g transform="translate(52 33)" fill="none" stroke="#56dcfc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 18h54l18 20v42H22z"/>
+        <path d="M76 18v20h18M40 57h37M40 72h25" stroke-opacity="0.72"/>
+      </g>
+      <text x="184" y="48" fill="#56dcfc" font-size="20" font-weight="800" letter-spacing="3">01  SOURCE</text>
+      <text x="184" y="99" fill="#f6f9fc" font-size="45" font-weight="750">k2 / CUDA-oriented stack</text>
+      <text x="1160" y="89" fill="#8ea9bf" font-size="24" font-weight="650" text-anchor="end">FSA · kernels · extension</text>
+    </g>
+    <circle cx="130" cy="268" r="27" fill="#07111f" stroke="#56dcfc" stroke-width="4"/>
+    <circle cx="130" cy="268" r="8" fill="#56dcfc"/>
+    <path d="M157 268h33" stroke="#56dcfc" stroke-width="4"/>
+
+    <!-- Stage 02 -->
+    <g transform="translate(190 385)">
+      <rect width="1220" height="145" rx="24" fill="url(#panel)" stroke="#8ea9bf" stroke-opacity="0.16" stroke-width="2"/>
+      <rect width="8" height="145" rx="4" fill="#3cb5ff"/>
+      <path d="M0 24a24 24 0 0124-24h180v145H24A24 24 0 010 121z" fill="#197dff" fill-opacity="0.045"/>
+      <g transform="translate(54 39)" fill="none" stroke="#43bdff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 22h27l10-13 10 13h31v49H57l-10 13-10-13H10z"/>
+        <path d="M28 47h42M47 30v34" stroke-opacity="0.65"/>
+      </g>
+      <text x="184" y="48" fill="#43bdff" font-size="20" font-weight="800" letter-spacing="3">02  TRANSLATE</text>
+      <text x="184" y="99" fill="#f6f9fc" font-size="45" font-weight="750">HIP compatibility + CMake</text>
+      <text x="1160" y="89" fill="#8ea9bf" font-size="24" font-weight="650" text-anchor="end">build · shims · dispatch</text>
+    </g>
+    <circle cx="130" cy="458" r="27" fill="#07111f" stroke="#43bdff" stroke-width="4"/>
+    <circle cx="130" cy="458" r="8" fill="#43bdff"/>
+    <path d="M157 458h33" stroke="#43bdff" stroke-width="4"/>
+
+    <!-- Stage 03 -->
+    <g transform="translate(190 575)">
+      <rect width="1220" height="145" rx="24" fill="url(#panel)" stroke="#8ea9bf" stroke-opacity="0.16" stroke-width="2"/>
+      <rect width="8" height="145" rx="4" fill="#268fff"/>
+      <path d="M0 24a24 24 0 0124-24h180v145H24A24 24 0 010 121z" fill="#197dff" fill-opacity="0.05"/>
+      <g transform="translate(52 34)" fill="none" stroke="#268fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="12" y="13" width="76" height="62" rx="10"/>
+        <path d="M31 32l-10 12 10 12M69 32l10 12-10 12M50 28v32" stroke-opacity="0.78"/>
+        <path d="M32 4v9M50 4v9M68 4v9M32 75v9M50 75v9M68 75v9"/>
+      </g>
+      <text x="184" y="48" fill="#4ea4ff" font-size="20" font-weight="800" letter-spacing="3">03  EXECUTE</text>
+      <text x="184" y="99" fill="#f6f9fc" font-size="45" font-weight="750">rocPRIM / PyTorch ROCm</text>
+      <text x="1160" y="89" fill="#8ea9bf" font-size="24" font-weight="650" text-anchor="end">primitives · autograd · ops</text>
+    </g>
+    <circle cx="130" cy="648" r="27" fill="#07111f" stroke="#268fff" stroke-width="4"/>
+    <circle cx="130" cy="648" r="8" fill="#268fff"/>
+    <path d="M157 648h33" stroke="#268fff" stroke-width="4"/>
+
+    <!-- Stage 04 -->
+    <g transform="translate(190 765)">
+      <rect width="1220" height="145" rx="24" fill="url(#destination)" stroke="#56dcfc" stroke-opacity="0.5" stroke-width="2"/>
+      <rect width="8" height="145" rx="4" fill="url(#accent)"/>
+      <path d="M0 24a24 24 0 0124-24h180v145H24A24 24 0 010 121z" fill="#56dcfc" fill-opacity="0.055"/>
+      <g transform="translate(51 32)" fill="none" stroke="#56dcfc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="13" y="10" width="76" height="70" rx="9"/>
+        <rect x="33" y="30" width="36" height="30" rx="5" stroke-opacity="0.72"/>
+        <path d="M3 28h10M3 45h10M3 62h10M89 28h10M89 45h10M89 62h10M31 0v10M51 0v10M71 0v10M31 80v10M51 80v10M71 80v10"/>
+      </g>
+      <text x="184" y="48" fill="#56dcfc" font-size="20" font-weight="800" letter-spacing="3">04  VALIDATE</text>
+      <text x="184" y="101" fill="#f6f9fc" font-size="48" font-weight="780">AMD MI210</text>
+      <g transform="translate(1012 47)" font-size="20" font-weight="750" text-anchor="middle">
+        <rect width="152" height="49" rx="12" fill="#56dcfc" fill-opacity="0.1" stroke="#56dcfc" stroke-opacity="0.45"/>
+        <path d="M22 24l8 8 16-18" fill="none" stroke="#56dcfc" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="99" y="32" fill="#d8f7ff">VERIFIED</text>
+      </g>
+    </g>
+    <circle cx="130" cy="838" r="30" fill="#07111f" stroke="#56dcfc" stroke-width="5"/>
+    <path d="M117 838l9 9 18-21" fill="none" stroke="#56dcfc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M160 838h30" stroke="#56dcfc" stroke-width="4"/>
+
+    <g transform="translate(1438 207)" opacity="0.6">
+      <circle cx="0" cy="0" r="5" fill="#56dcfc"/>
+      <circle cx="32" cy="0" r="5" fill="#197dff"/>
+      <circle cx="64" cy="0" r="5" fill="#56dcfc"/>
+      <path d="M0 22h64M0 40h42" stroke="#8ea9bf" stroke-opacity="0.35" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <text x="1410" y="958" fill="#8ea9bf" fill-opacity="0.62" font-size="18" font-weight="700" letter-spacing="3" text-anchor="end">PORT · BUILD · TEST</text>
+  </g>
+</svg>

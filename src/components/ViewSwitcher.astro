@@ -1,0 +1,23 @@
+---
+interface Props {
+  active: 'technical' | 'showcase';
+  compact?: boolean;
+}
+
+const { active, compact = false } = Astro.props;
+---
+
+<nav
+  class:list={['view-switcher', { compact }]}
+  aria-label={compact ? 'Portfolio view — desktop' : 'Portfolio view — mobile'}
+>
+  {!compact && <span class="view-switcher__label">View</span>}
+  <a href="/" aria-current={active === 'technical' ? 'page' : undefined}>
+    <span class="view-switcher__dot" aria-hidden="true"></span>
+    Technical
+  </a>
+  <a href="/showcase/" aria-current={active === 'showcase' ? 'page' : undefined}>
+    <span class="view-switcher__dot" aria-hidden="true"></span>
+    Showcase
+  </a>
+</nav>

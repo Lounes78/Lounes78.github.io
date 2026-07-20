@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ProjectMedia from '../../components/ProjectMedia.astro';
+import { site, type Project } from '../../data/site';
+import '../../styles/case-study.css';
+
+export function getStaticPaths() {
+  return site.projects
+    .filter((project) => project.publicApproved)
+    .map((project, index, projects) => ({
+      params: { slug: project.slug },
+      props: {
+        project,
+        nextProject: projects[(index + 1) % projects.length],
+      },
+    }));
+}
+
+interface Props {
+  project: Project;
+  nextProject: Project;
+}
+
+const { project, nextProject } = Astro.props;
+const title = `${project.title} — ${site.profile.name}`;
+const pageDescription = `${project.summary} Read the context, constraints, implementation decisions, and measured results.`;
+---
+
+<BaseLayout title={title} description={pageDescription} theme="technical">
+  <SiteHeader active="technical" />
+
+  <main id="main-content" class:list={['case-page', 'accent-' + project.accent]}>
+    <header class="case-hero">
+      <nav class="case-hero__trail" aria-label="Breadcrumb">
+        <a href="/#work">Selected work</a>
+        <span aria-hidden="true">/</span>
+        <span>{project.shortTitle}</span>
+      </nav>
+
+      <div class="case-hero__grid">
+        <div>
+          <p class="eyebrow">{project.eyebrow}</p>
+          <h1>{project.title}</h1>
+          <p class="case-hero__summary">{project.summary}</p>
+
+          <div class="case-hero__actions">
+            <a class="case-button case-button--primary" href="#results">See the outcomes <span aria-hidden="true">↓</span></a>
+            {project.links.map((link) => (
+              <a class="case-button" href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>
+            ))}
+          </div>
+        </div>
+
+        <dl class="case-facts">
+          <div>
+            <dt>Period</dt>
+            <dd>{project.period}</dd>
+          </div>
+          <div>
+            <dt>Type</dt>
+            <dd>{project.status}</dd>
+          </div>
+          <div>
+            <dt>Contribution</dt>
+            <dd>{project.role}</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="case-stage" aria-label="Project overview visual">
+      <ProjectMedia project={project} eager />
+      <div class="case-stage__caption">
+        <span>{project.shortTitle}</span>
+        <span>{project.media.alt}</span>
+      </div>
+    </section>
+
+    <div class="case-content">
+      <aside class="case-toc" aria-label="Case study contents">
+        <p>In this case study</p>
+        <nav aria-label="Case study sections">
+          <a href="#context">01 · Context</a>
+          <a href="#architecture">02 · Architecture</a>
+          <a href="#implementation">03 · Implementation</a>
+          <a href="#results">04 · Results</a>
+          <a href="#reflection">05 · Reflection</a>
+          <a href="#evidence">06 · Evidence</a>
+        </nav>
+      </aside>
+
+      <article class="case-article">
+        <section id="context" class="case-section">
+          <p class="case-section__number">01 / Context</p>
+          <h2>The problem and my responsibility</h2>
+          <div class="case-prose-grid">
+            <div>
+              <h3>Problem</h3>
+              <p>{project.problem}</p>
+            </div>
+            <div>
+              <h3>My role</h3>
+              <p>{project.role}</p>
+            </div>
+          </div>
+
+          <div class="case-callout">
+            <p class="eyebrow">Operating constraints</p>
+            <ul class="case-list">
+              {project.constraints.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </section>
+
+        <section id="architecture" class="case-section">
+          <p class="case-section__number">02 / Architecture</p>
+          <h2>Decisions that shaped the system</h2>
+          <ol class="decision-list">
+            {project.decisions.map((decision, index) => (
+              <li>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <p>{decision}</p>
+              </li>
+            ))}
+          </ol>
+          <ul class="tag-list case-tech" aria-label="Technologies used">
+            {project.technologies.map((technology) => <li>{technology}</li>)}
+          </ul>
+        </section>
+
+        <section id="implementation" class="case-section">
+          <p class="case-section__number">03 / Implementation</p>
+          <h2>What I built</h2>
+          <ul class="implementation-list">
+            {project.contributions.map((contribution, index) => (
+              <li>
+                <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                <p>{contribution}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="results" class="case-section case-section--results">
+          <p class="case-section__number">04 / Results</p>
+          <h2>Measured and observable outcomes</h2>
+          <ul class="result-list">
+            {project.results.map((result) => <li>{result}</li>)}
+          </ul>
+        </section>
+
+        <section id="reflection" class="case-section">
+          <p class="case-section__number">05 / Reflection</p>
+          <h2>Boundaries and lessons</h2>
+          <div class="case-prose-grid">
+            <div>
+              <h3>Limitations</h3>
+              <ul class="case-list case-list--plain">
+                {project.limitations.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+            <div>
+              <h3>What changed my thinking</h3>
+              <ul class="case-list case-list--plain">
+                {project.lessons.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="evidence" class="case-section case-evidence">
+          <p class="case-section__number">06 / Evidence</p>
+          <h2>Evidence boundary</h2>
+          <p>{project.evidenceNote}</p>
+          <dl>
+            <div>
+              <dt>Last fact-check</dt>
+              <dd><time datetime={project.lastFactCheck}>18 July 2026</time></dd>
+            </div>
+            <div>
+              <dt>Public status</dt>
+              <dd>{project.publicApproved ? 'Approved for this portfolio' : 'Private draft'}</dd>
+            </div>
+          </dl>
+          {project.links.length > 0 && (
+            <div class="case-evidence__links">
+              {project.links.map((link) => (
+                <a class="text-link" href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>
+              ))}
+            </div>
+          )}
+        </section>
+      </article>
+    </div>
+
+    <nav class="next-case" aria-label="Next case study">
+      <span>Continue exploring</span>
+      <a href={'/work/' + nextProject.slug + '/'}>
+        <strong>{nextProject.title}</strong>
+        <i aria-hidden="true">↗</i>
+      </a>
+    </nav>
+  </main>
+
+  <SiteFooter theme="technical" />
+</BaseLayout>

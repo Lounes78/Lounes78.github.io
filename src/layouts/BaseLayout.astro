@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  theme?: 'technical' | 'showcase';
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = site.profile.name + ' — ' + site.profile.title,
+  description = site.profile.introduction,
+  theme = 'technical',
+  image = theme === 'technical' ? '/og-technical.png' : '/og-showcase.png',
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.profile.name,
+  givenName: site.profile.givenName,
+  familyName: site.profile.familyName,
+  jobTitle: site.profile.title,
+  url: new URL('/', Astro.site).toString(),
+  email: 'mailto:' + site.profile.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Paris',
+    addressCountry: 'FR',
+  },
+  sameAs: [site.profile.github, site.profile.linkedin],
+  worksFor: {
+    '@type': 'Organization',
+    name: site.experiences[0].organization,
+    url: site.experiences[0].organizationUrl,
+  },
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: site.experiences[0].role,
+    description: site.experiences[0].summary,
+    occupationLocation: {
+      '@type': 'City',
+      name: 'Paris',
+    },
+  },
+  alumniOf: site.education.map((item) => ({
+    '@type': 'EducationalOrganization',
+    name: item.institution,
+  })),
+  knowsAbout: site.skills.flatMap((group) => group.items),
+  subjectOf: site.projects
+    .filter((project) => project.publicApproved && !project.archive)
+    .map((project) => ({
+      '@type': 'CreativeWork',
+      name: project.title,
+      description: project.summary,
+      url: new URL('/work/' + project.slug + '/', Astro.site).toString(),
+    })),
+};
+---
+
+<!doctype html>
+<html lang="en" data-theme={theme}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="author" content={site.profile.name} />
+    <meta name="theme-color" content={theme === 'technical' ? '#f4f1e9' : '#070a12'} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content={site.profile.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={title} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+
+    <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class={'theme-' + theme}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <slot />
+  </body>
+</html>

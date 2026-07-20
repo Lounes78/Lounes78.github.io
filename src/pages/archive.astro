@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { archivedProjects, site } from '../data/site';
+import '../styles/case-study.css';
+---
+
+<BaseLayout
+  title={`Project archive — ${site.profile.name}`}
+  description="Earlier computer-vision, digital-hardware, and optimization work by Lounes Benali."
+  theme="technical"
+>
+  <SiteHeader active="technical" />
+  <main id="main-content" class="archive-page">
+    <header class="archive-hero">
+      <p class="eyebrow">Project archive · 2023—2025</p>
+      <h1>Earlier work, kept with context.</h1>
+      <p>
+        These projects trace the path from electronics and optimization into computer vision and modern ML systems.
+        They are intentionally separated from the current speech-AI portfolio, but the evidence remains available.
+      </p>
+      <a class="text-link" href="/#work">Return to selected work <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <section class="archive-grid" aria-label="Archived projects">
+      {archivedProjects.map((project, index) => <ProjectCard project={project} variant="compact" index={index} />)}
+    </section>
+  </main>
+  <SiteFooter theme="technical" />
+</BaseLayout>

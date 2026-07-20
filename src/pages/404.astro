@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { site } from '../data/site';
+import '../styles/case-study.css';
+---
+
+<BaseLayout
+  title={`Page not found — ${site.profile.name}`}
+  description="The requested page could not be found."
+  theme="technical"
+  noindex
+>
+  <SiteHeader active="technical" />
+  <main id="main-content" class="not-found">
+    <div class="not-found__signal" aria-hidden="true"><span>4</span><i></i><span>4</span></div>
+    <p class="eyebrow">Signal lost · 404</p>
+    <h1>This route has no output.</h1>
+    <p>The project may have moved, or the address may be incomplete.</p>
+    <div>
+      <a class="case-button case-button--primary" href="/">Open the Technical Profile</a>
+      <a class="case-button" href="/showcase/">Explore the Interactive Showcase</a>
+    </div>
+  </main>
+  <SiteFooter theme="technical" />
+</BaseLayout>

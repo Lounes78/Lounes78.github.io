@@ -1,0 +1,52 @@
+---
+import ViewSwitcher from './ViewSwitcher.astro';
+import { site } from '../data/site';
+
+interface Props {
+  active: 'technical' | 'showcase';
+}
+
+const { active } = Astro.props;
+const technicalItems = [
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Work', href: '/#work' },
+  { label: 'Skills', href: '/#skills' },
+  { label: 'Education', href: '/#education' },
+];
+const showcaseItems = [
+  { label: 'Work', href: '/showcase/#work' },
+  { label: 'Areas', href: '/showcase/#areas' },
+  { label: 'Contact', href: '/showcase/#contact' },
+];
+const items = active === 'technical' ? technicalItems : showcaseItems;
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href={active === 'technical' ? '/' : '/showcase/'} aria-label={'LB — ' + site.profile.name + ' home'}>
+      <span class="brand__mark" aria-hidden="true">LB</span>
+      <span class="brand__name">{site.profile.name}</span>
+    </a>
+
+    <nav class="site-header__nav" aria-label="Primary navigation">
+      {items.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a class="nav-cv" href={site.profile.cv}>CV <span aria-hidden="true">↗</span></a>
+    </nav>
+
+    <ViewSwitcher active={active} compact />
+
+    <details class="mobile-menu">
+      <summary>
+        <span>Menu</span>
+        <span class="mobile-menu__icon" aria-hidden="true"><i></i><i></i></span>
+      </summary>
+      <div class="mobile-menu__panel">
+        <nav aria-label="Mobile navigation">
+          {items.map((item) => <a href={item.href}>{item.label}</a>)}
+          <a href={site.profile.cv}>Download CV <span aria-hidden="true">↗</span></a>
+        </nav>
+        <ViewSwitcher active={active} />
+      </div>
+    </details>
+  </div>
+</header>

@@ -1,0 +1,181 @@
+<canvas class="showcase-particle-field" data-particle-field aria-hidden="true"></canvas>
+
+<script>
+  type Particle = {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    radius: number;
+  };
+
+  function initialiseParticleField(canvas: HTMLCanvasElement) {
+    if (canvas.dataset.ready === 'true') return;
+    canvas.dataset.ready = 'true';
+
+    const drawingContext = canvas.getContext('2d');
+    const host = canvas.parentElement;
+    if (!drawingContext || !host) return;
+    const context = drawingContext;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let width = 0;
+    let height = 0;
+    let particles: Particle[] = [];
+    let pointer: { x: number; y: number } | null = null;
+    let visible = true;
+    let previousFrame = 0;
+    let animationFrame = 0;
+    let running = false;
+
+    const makeParticle = (): Particle => {
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: reducedMotion ? 0 : (Math.random() - 0.5) * 2,
+        vy: reducedMotion ? 0 : (Math.random() - 0.5) * 2,
+        radius: Math.random() * 3,
+      };
+    };
+
+    const resize = () => {
+      const bounds = canvas.getBoundingClientRect();
+      width = Math.max(1, bounds.width);
+      height = Math.max(1, bounds.height);
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = Math.round(width * pixelRatio);
+      canvas.height = Math.round(height * pixelRatio);
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+      const legacyDensity = Math.round(((width * height) / 1000) * (45 / 800));
+      const targetCount = Math.max(16, Math.min(110, legacyDensity));
+      particles = Array.from({ length: targetCount }, makeParticle);
+      draw();
+    };
+
+    const drawConnection = (
+      a: Particle,
+      b: Particle,
+      distance: number,
+      maximum: number,
+      baseOpacity: number,
+    ) => {
+      const opacity = (1 - distance / maximum) * baseOpacity;
+      context.beginPath();
+      context.moveTo(a.x, a.y);
+      context.lineTo(b.x, b.y);
+      context.strokeStyle = `rgba(27, 190, 245, ${opacity})`;
+      context.lineWidth = 0.8;
+      context.stroke();
+    };
+
+    function draw() {
+      context.clearRect(0, 0, width, height);
+      const linkDistance = 120;
+
+      for (let index = 0; index < particles.length; index += 1) {
+        const particle = particles[index];
+
+        for (let peerIndex = index + 1; peerIndex < particles.length; peerIndex += 1) {
+          const peer = particles[peerIndex];
+          const distance = Math.hypot(particle.x - peer.x, particle.y - peer.y);
+          if (distance < linkDistance) drawConnection(particle, peer, distance, linkDistance, 0.678667);
+        }
+
+        if (pointer) {
+          const pointerDistance = Math.hypot(particle.x - pointer.x, particle.y - pointer.y);
+          if (pointerDistance < 200) {
+            drawConnection(particle, { ...particle, x: pointer.x, y: pointer.y }, pointerDistance, 200, 1);
+          }
+        }
+
+        context.beginPath();
+        context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        context.fillStyle = 'rgba(255, 255, 255, 0.678667)';
+        context.fill();
+      }
+    }
+
+    const update = (frameScale: number) => {
+      for (const particle of particles) {
+        particle.x += particle.vx * frameScale;
+        particle.y += particle.vy * frameScale;
+
+        if (particle.x < -4 || particle.x > width + 4) {
+          particle.x = particle.x < -4 ? width + 4 : -4;
+          particle.y = Math.random() * height;
+        }
+        if (particle.y < -4 || particle.y > height + 4) {
+          particle.y = particle.y < -4 ? height + 4 : -4;
+          particle.x = Math.random() * width;
+        }
+      }
+    };
+
+    const animate = (time: number) => {
+      if (!visible || document.hidden) {
+        running = false;
+        return;
+      }
+
+      const elapsed = previousFrame ? time - previousFrame : 16.667;
+      update(Math.min(elapsed / 16.667, 2.5));
+      draw();
+      previousFrame = time;
+      animationFrame = window.requestAnimationFrame(animate);
+    };
+
+    const startAnimation = () => {
+      if (reducedMotion || running || !visible || document.hidden) return;
+      running = true;
+      previousFrame = 0;
+      animationFrame = window.requestAnimationFrame(animate);
+    };
+
+    const stopAnimation = () => {
+      window.cancelAnimationFrame(animationFrame);
+      running = false;
+    };
+
+    const trackPointer = (event: PointerEvent) => {
+      const bounds = canvas.getBoundingClientRect();
+      const inside =
+        event.clientX >= bounds.left &&
+        event.clientX <= bounds.right &&
+        event.clientY >= bounds.top &&
+        event.clientY <= bounds.bottom;
+
+      pointer = inside
+        ? { x: event.clientX - bounds.left, y: event.clientY - bounds.top }
+        : null;
+
+      if (reducedMotion) draw();
+    };
+
+    window.addEventListener('pointermove', trackPointer, { passive: true });
+    window.addEventListener('pointerout', () => {
+      pointer = null;
+      if (reducedMotion) draw();
+    });
+
+    new ResizeObserver(resize).observe(canvas);
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) startAnimation();
+      else stopAnimation();
+    }).observe(canvas);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopAnimation();
+      else startAnimation();
+    });
+
+    resize();
+    startAnimation();
+  }
+
+  document
+    .querySelectorAll<HTMLCanvasElement>('[data-particle-field]')
+    .forEach(initialiseParticleField);
+</script>

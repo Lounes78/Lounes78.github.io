@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ParticleField from '../../components/showcase/ParticleField.astro';
+import ShowcaseProject from '../../components/showcase/ShowcaseProject.astro';
+import { archivedProjects, showcaseProjects, site } from '../../data/site';
+import '../../styles/showcase.css';
+
+const projectOrder = [
+  'seenitt',
+  'hume-voice-integration',
+  'synthetic-speech-data',
+  'gpu-speech-infrastructure',
+];
+
+const featuredProjects = projectOrder
+  .map((slug) => showcaseProjects.find((project) => project.slug === slug))
+  .filter((project): project is (typeof showcaseProjects)[number] => Boolean(project));
+---
+
+<BaseLayout
+  title={`${site.profile.name} — Interactive AI Project Showcase`}
+  description="An interactive tour through Lounes Benali's real-time speech, vision, and GPU systems work."
+  theme="showcase"
+>
+  <SiteHeader active="showcase" />
+
+  <main id="main-content" class="showcase-page">
+    <section class="showcase-hero" aria-labelledby="showcase-title">
+      <ParticleField />
+
+      <div class="showcase-hero__copy">
+        <p class="showcase-kicker">
+          <span aria-hidden="true"></span>Speech · vision · systems
+        </p>
+        <h1 id="showcase-title">
+          From raw signal<br />
+          to <em>real-time</em><br />
+          intelligence.
+        </h1>
+        <p class="showcase-hero__intro">{site.profile.introduction}</p>
+
+        <div class="showcase-hero__actions">
+          <a class="showcase-button showcase-button--bright" href="#work">
+            Enter selected work <span aria-hidden="true">↓</span>
+          </a>
+          <a class="showcase-button" href="/">
+            Open Technical Profile <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <p class="showcase-hero__context">
+          <span>{site.profile.currentStatus}</span>
+          <span>{site.profile.location}</span>
+        </p>
+      </div>
+
+    </section>
+
+    <section class="showcase-evidence" aria-labelledby="evidence-title">
+      <div class="showcase-section-heading showcase-section-heading--evidence">
+        <p class="showcase-kicker"><span aria-hidden="true"></span>Selected scale and results</p>
+        <h2 id="evidence-title">Speech data, training,<br />inference, and deployment.</h2>
+        <p>
+          Metrics from speech data processing, distributed training and inference,
+          and GPU voice activity detection.
+        </p>
+      </div>
+
+      <dl class="showcase-metrics">
+        {site.metrics.map((metric, index) => (
+          <div>
+            <dt>
+              <span aria-hidden="true">0{index + 1}</span>
+              <strong>{metric.value}</strong>
+              {metric.label}
+            </dt>
+            <dd>{metric.detail}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <section class="showcase-work" id="work" aria-labelledby="work-title">
+      <header class="showcase-work__intro">
+        <p class="showcase-kicker"><span aria-hidden="true"></span>Selected systems / 01—04</p>
+        <h2 id="work-title">Selected projects.</h2>
+        <p>
+          Four projects spanning streaming vision, speech interfaces, synthetic data,
+          and GPU infrastructure. Each links to a detailed case study.
+        </p>
+      </header>
+
+      <div class="showcase-work__list">
+        {featuredProjects.map((project, index) => (
+          <ShowcaseProject project={project} index={index} />
+        ))}
+      </div>
+    </section>
+
+    <section class="showcase-approach" id="areas" aria-labelledby="approach-title">
+      <div class="showcase-approach__lead">
+        <p class="showcase-kicker"><span aria-hidden="true"></span>Areas of work</p>
+        <h2 id="approach-title">Data, models,<br /><em>and deployment.</em></h2>
+        <p>The case studies cover three recurring areas.</p>
+      </div>
+
+      <ol class="showcase-principles">
+        <li>
+          <span>01 / Speech</span>
+          <h3>Data and evaluation</h3>
+          <p>Corpus construction, quality filtering, multilingual ASR, TTS, and error analysis.</p>
+        </li>
+        <li>
+          <span>02 / Infrastructure</span>
+          <h3>Training and inference</h3>
+          <p>Multi-node GPU workloads, checkpointing, recovery, throughput, and heterogeneous accelerators.</p>
+        </li>
+        <li>
+          <span>03 / Applications</span>
+          <h3>Real-time systems</h3>
+          <p>Streaming speech and vision pipelines, low-latency interfaces, and edge deployment.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="showcase-archive" aria-labelledby="archive-title">
+      <header>
+        <p class="showcase-kicker"><span aria-hidden="true"></span>Earlier explorations</p>
+        <h2 id="archive-title">Earlier projects.</h2>
+        <p>Computer vision, digital hardware, and optimization.</p>
+      </header>
+
+      <div class="showcase-archive__grid">
+        {archivedProjects.map((project, index) => (
+          <article class:list={['showcase-archive-card', 'accent-' + project.accent]}>
+            <div class="showcase-archive-card__visual" aria-hidden="true">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <i></i><i></i><i></i>
+            </div>
+            <p>{project.eyebrow}</p>
+            <h3><a href={'/work/' + project.slug + '/'}>{project.title}</a></h3>
+            <ul aria-label="Technologies">
+              {project.technologies.slice(0, 3).map((technology) => <li>{technology}</li>)}
+            </ul>
+            <a class="showcase-archive-card__link" href={'/work/' + project.slug + '/'}>
+              View project <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <aside class="showcase-profile-bridge" aria-label="Technical portfolio version">
+      <div>
+        <p class="showcase-kicker"><span aria-hidden="true"></span>Technical profile</p>
+        <h2>View experience,<br />education, and skills.</h2>
+      </div>
+      <a class="showcase-button showcase-button--bright" href="/">
+        Open Technical Profile <span aria-hidden="true">↗</span>
+      </a>
+    </aside>
+  </main>
+
+  <SiteFooter theme="showcase" />
+</BaseLayout>

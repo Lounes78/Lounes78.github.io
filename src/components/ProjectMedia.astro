@@ -1,0 +1,38 @@
+---
+import SystemVisual from './SystemVisual.astro';
+import type { Project } from '../data/site';
+
+interface Props {
+  project: Project;
+  eager?: boolean;
+}
+
+const { project, eager = false } = Astro.props;
+const media = project.media;
+---
+
+<div class:list={['project-media', 'project-media--' + media.type]}>
+  {media.type === 'image' && (
+    <img
+      src={media.src}
+      alt={media.alt}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      fetchpriority={eager ? 'high' : 'auto'}
+    />
+  )}
+  {media.type === 'video' && (
+    <video
+      controls
+      muted
+      playsinline
+      preload="none"
+      poster={media.poster}
+      aria-label={media.alt}
+    >
+      <source src={media.src} type="video/mp4" />
+      Your browser does not support embedded video.
+    </video>
+  )}
+  {media.type === 'system' && <SystemVisual variant={media.variant} alt={media.alt} />}
+</div>

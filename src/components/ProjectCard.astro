@@ -1,0 +1,34 @@
+---
+import ProjectMedia from './ProjectMedia.astro';
+import type { Project } from '../data/site';
+
+interface Props {
+  project: Project;
+  variant?: 'technical' | 'showcase' | 'compact';
+  index?: number;
+}
+
+const { project, variant = 'technical', index = 0 } = Astro.props;
+---
+
+<article class:list={['project-card', 'project-card--' + variant, 'accent-' + project.accent]}>
+  <div class="project-card__media">
+    <ProjectMedia project={project} eager={index === 0 && variant === 'showcase'} />
+    <span class="project-card__index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+  </div>
+  <div class="project-card__body">
+    <div class="project-card__meta">
+      <span>{project.eyebrow}</span>
+      <span>{project.period}</span>
+    </div>
+    <h3><a href={'/work/' + project.slug + '/'}>{project.title}</a></h3>
+    <p>{project.summary}</p>
+    <ul class="tag-list" aria-label="Technologies">
+      {project.technologies.slice(0, variant === 'compact' ? 3 : 6).map((tag) => <li>{tag}</li>)}
+    </ul>
+    <div class="project-card__links">
+      <a class="text-link" href={'/work/' + project.slug + '/'}>Read case study <span aria-hidden="true">↗</span></a>
+      {project.links[0] && <a class="text-link text-link--muted" href={project.links[0].href}>{project.links[0].label} <span aria-hidden="true">↗</span></a>}
+    </div>
+  </div>
+</article>

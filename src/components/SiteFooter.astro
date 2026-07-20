@@ -1,0 +1,26 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  theme?: 'technical' | 'showcase';
+}
+
+const { theme = 'technical' } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class:list={['site-footer', 'site-footer--' + theme]} id="contact">
+  <div class="site-footer__lead">
+    <p class="eyebrow">Contact</p>
+    <a class="footer-email" href={'mailto:' + site.profile.email}>{site.profile.email}<span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="site-footer__meta">
+    <p><span class="status-dot" aria-hidden="true"></span>{site.profile.location}</p>
+    <nav aria-label="Social links">
+      <a href={site.profile.github}>GitHub</a>
+      <a href={site.profile.linkedin}>LinkedIn</a>
+      <a href={site.profile.cv}>CV</a>
+    </nav>
+    <p>© {year} {site.profile.name}</p>
+  </div>
+</footer>

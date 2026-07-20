@@ -1,0 +1,263 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { site, technicalProjects } from '../data/site';
+import '../styles/technical.css';
+
+const featuredExperiences = site.experiences.filter((experience) => experience.featured);
+const supportingExperiences = site.experiences.filter((experience) => !experience.featured);
+
+const credibility = [
+  'IFM / MBZUAI',
+  'Ampere / Renault Group',
+  'Sorbonne University',
+  'MentraOS grant recipient',
+];
+---
+
+<BaseLayout
+  title={`${site.profile.name} — ${site.profile.title}`}
+  description={site.profile.introduction}
+  theme="technical"
+>
+  <SiteHeader active="technical" />
+
+  <main id="main-content">
+    <section class="technical-hero" aria-labelledby="hero-title">
+      <div class="hero-grid hero-grid--top" aria-hidden="true"></div>
+
+      <div class="hero-copy">
+        <p class="hero-kicker">
+          <span class="availability-dot" aria-hidden="true"></span>
+          Paris, France · Speech research &amp; engineering
+        </p>
+
+        <h1 id="hero-title">
+          Speech AI <span>&amp;</span><br />
+          ML systems <em>engineer.</em>
+        </h1>
+
+        <p class="hero-introduction">{site.profile.introduction}</p>
+
+        <div class="hero-actions">
+          <a class="button button--primary" href="#work">
+            View selected work <span aria-hidden="true">↓</span>
+          </a>
+          <a class="button button--secondary" href={site.profile.cv}>
+            <span>Download CV <small>Updated 18 Jul 2026</small></span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="hero-social" href={site.profile.github}>GitHub <span aria-hidden="true">↗</span></a>
+          <a class="hero-social" href={site.profile.linkedin}>LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <a class="showcase-invite" href="/showcase/">
+          <span class="showcase-invite__mark" aria-hidden="true">✦</span>
+          <span>
+            <small>Prefer a more visual tour?</small>
+            Explore the Interactive Showcase
+          </span>
+          <i aria-hidden="true">↗</i>
+        </a>
+      </div>
+
+      <aside class="current-card" aria-label="Current position">
+        <div class="current-card__header">
+          <span>Current / 2026</span>
+          <span class="current-card__status">In progress</span>
+        </div>
+        <p class="current-card__label">End-of-study research internship</p>
+        <h2>Institute of Foundation Models</h2>
+        <p class="current-card__org">MBZUAI · through August 2026</p>
+        <p>{site.profile.currentStatus}</p>
+        <dl>
+          <div>
+            <dt>Focus</dt>
+            <dd>Arabic-centered multilingual ASR</dd>
+          </div>
+          <div>
+            <dt>Scope</dt>
+            <dd>Data · training · evaluation · inference</dd>
+          </div>
+          <div>
+            <dt>Compute</dt>
+            <dd>ROCm &amp; CUDA clusters</dd>
+          </div>
+        </dl>
+      </aside>
+
+      <div class="credibility-line">
+        <span>Selected affiliations</span>
+        <ul>
+          {credibility.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="evidence-section" aria-labelledby="evidence-title">
+      <div class="evidence-heading">
+        <p class="eyebrow">Evidence at a glance</p>
+        <h2 id="evidence-title">From model research<br />to dependable infrastructure.</h2>
+      </div>
+      <ol class="metric-grid">
+        {site.metrics.map((metric, index) => (
+          <li>
+            <span class="metric-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <strong>{metric.value}</strong>
+            <h3>{metric.label}</h3>
+            <p>{metric.detail}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="evidence-note">
+        Measurements and scale reported from the current CV; deeper implementation context is provided in the relevant case studies.
+      </p>
+    </section>
+
+    <section class="experience-section section-shell" id="experience" aria-labelledby="experience-title">
+      <header class="section-intro">
+        <p class="eyebrow">01 / Experience</p>
+        <h2 id="experience-title">Research depth.<br />Production discipline.</h2>
+        <p>
+          Work across the full speech-AI lifecycle, from large-scale corpus design and model training to low-latency product integration.
+        </p>
+      </header>
+
+      <div class="experience-list">
+        {featuredExperiences.map((experience, index) => (
+          <article class="experience-card">
+            <div class="experience-card__rail" aria-hidden="true">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <i></i>
+            </div>
+            <div class="experience-card__body">
+              <div class="experience-card__heading">
+                <div>
+                  <p class="experience-card__period">{experience.period} · {experience.location}</p>
+                  <h3>{experience.role}</h3>
+                  {experience.organizationUrl ? (
+                    <a class="experience-card__org" href={experience.organizationUrl}>
+                      {experience.organization} <span aria-hidden="true">↗</span>
+                    </a>
+                  ) : (
+                    <p class="experience-card__org">{experience.organization}</p>
+                  )}
+                </div>
+                <span class="experience-card__type">{index === 0 ? 'Research' : 'Applied R&D'}</span>
+              </div>
+              <p class="experience-card__summary">{experience.summary}</p>
+              <ul class="experience-card__bullets">
+                {experience.bullets.map((bullet) => <li>{bullet}</li>)}
+              </ul>
+              <ul class="tag-list" aria-label={`Skills used at ${experience.organization}`}>
+                {experience.tags.map((tag) => <li>{tag}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+
+        <div class="supporting-experience">
+          <p class="supporting-experience__label">Earlier experience</p>
+          {supportingExperiences.map((experience) => (
+            <article>
+              <p>{experience.period}</p>
+              <div>
+                <h3>{experience.role}</h3>
+                <p>{experience.organization} · {experience.location}</p>
+                <span>{experience.summary}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <header class="work-heading section-shell">
+        <div>
+          <p class="eyebrow">02 / Selected work</p>
+          <h2 id="work-title">Selected speech and ML systems.</h2>
+        </div>
+        <p>
+          Case studies describing the problem, my contribution, implementation, and measured results.
+        </p>
+      </header>
+
+      <div class="technical-project-grid">
+        {technicalProjects.map((project, index) => (
+          <ProjectCard project={project} variant="technical" index={index} />
+        ))}
+      </div>
+    </section>
+
+    <section class="skills-section section-shell" id="skills" aria-labelledby="skills-title">
+      <header class="section-intro section-intro--skills">
+        <p class="eyebrow">03 / Capabilities</p>
+        <h2 id="skills-title">Technical skills.</h2>
+        <p>Tools used in professional work and documented projects.</p>
+      </header>
+
+      <div class="skill-matrix">
+        {site.skills.map((group, index) => (
+          <article>
+            <span class="skill-matrix__index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{group.name}</h3>
+              <p>{group.description}</p>
+              <ul>
+                {group.items.map((skill) => <li>{skill}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="education-section section-shell" id="education" aria-labelledby="education-title">
+      <header class="education-heading">
+        <p class="eyebrow">04 / Education &amp; recognition</p>
+        <h2 id="education-title">Engineering foundations,<br />sharpened through research.</h2>
+      </header>
+
+      <div class="education-layout">
+        <ol class="education-list">
+          {site.education.map((education, index) => (
+            <li>
+              <span class="education-list__index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <div class="education-list__body">
+                <p>{education.period} · {education.location}</p>
+                <h3>{education.degree}</h3>
+                <strong>{education.institution}</strong>
+                {education.note && <span>{education.note}</span>}
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <aside class="recognition-card" aria-label="Recognition and languages">
+          <div>
+            <p class="recognition-card__label">Recognition</p>
+            <strong>Top of class</strong>
+            <span>Paris-Saclay University</span>
+          </div>
+          <div>
+            <p class="recognition-card__label">National rank</p>
+            <strong>29 / 1,576</strong>
+            <span>Engineering-school entrance examination</span>
+          </div>
+          <div>
+            <p class="recognition-card__label">Languages</p>
+            <ul>
+              {site.languages.map((language) => <li>{language}</li>)}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <SiteFooter theme="technical" />
+</BaseLayout>

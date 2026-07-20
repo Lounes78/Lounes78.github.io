@@ -1,0 +1,77 @@
+---
+import ProjectMedia from '../ProjectMedia.astro';
+import type { Project } from '../../data/site';
+
+interface Props {
+  project: Project;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const number = String(index + 1).padStart(2, '0');
+const primaryLink = project.links[0];
+
+const readouts: Record<string, string[]> = {
+  seenitt: ['Live H.264', '81 points tracked', 'FEN output'],
+  'hume-voice-integration': ['16 kHz in', '48 kHz out', 'Tool calls'],
+  'synthetic-speech-data': ['Speaker A', '24 kHz PCM', 'Speaker B'],
+  'gpu-speech-infrastructure': ['ROCm + CUDA', 'Fault recovery', 'Slurm'],
+};
+---
+
+<article
+  class:list={['showcase-project', 'accent-' + project.accent, { 'showcase-project--reverse': index % 2 === 1 }]}
+  data-project={project.slug}
+>
+  <div class="showcase-project__visual">
+    <div class="showcase-project__media">
+      <ProjectMedia project={project} eager={index === 0} />
+    </div>
+
+    <div class="showcase-project__readout" aria-hidden="true">
+      <span>{readouts[project.slug]?.[0] ?? project.status}</span>
+      <span>{readouts[project.slug]?.[1] ?? project.period}</span>
+      <span>{readouts[project.slug]?.[2] ?? project.shortTitle}</span>
+    </div>
+
+    <span class="showcase-project__status">
+      <i aria-hidden="true"></i>{project.status}
+    </span>
+    <span class="showcase-project__number" aria-hidden="true">{number}</span>
+  </div>
+
+  <div class="showcase-project__body">
+    <header>
+      <p class="showcase-project__eyebrow">{project.eyebrow} <span>{project.period}</span></p>
+      <h2><a href={'/work/' + project.slug + '/'}>{project.title}</a></h2>
+      <p class="showcase-project__summary">{project.summary}</p>
+    </header>
+
+    <div class="showcase-project__role">
+      <span>My part</span>
+      <p>{project.role}</p>
+    </div>
+
+    <div class="showcase-project__outcomes">
+      <span>What changed</span>
+      <ul>
+        {project.results.slice(0, 3).map((result) => <li>{result}</li>)}
+      </ul>
+    </div>
+
+    <ul class="showcase-project__tags" aria-label="Technologies">
+      {project.technologies.slice(0, 6).map((technology) => <li>{technology}</li>)}
+    </ul>
+
+    <div class="showcase-project__links">
+      <a class="showcase-link showcase-link--primary" href={'/work/' + project.slug + '/'}>
+        Explore the case study <span aria-hidden="true">↗</span>
+      </a>
+      {primaryLink && (
+        <a class="showcase-link" href={primaryLink.href}>
+          {primaryLink.label} <span aria-hidden="true">↗</span>
+        </a>
+      )}
+    </div>
+  </div>
+</article>

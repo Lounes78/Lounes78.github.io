@@ -1,0 +1,15 @@
+{
+  "name": "Lounes Benali — Portfolio",
+  "short_name": "Lounes Benali",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f0e8",
+  "theme_color": "#045e70",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

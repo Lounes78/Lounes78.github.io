@@ -1,0 +1,60 @@
+---
+interface Props {
+  variant: 'speech' | 'compute' | 'audio';
+  alt: string;
+}
+
+const { variant, alt } = Astro.props;
+---
+
+<div class:list={['system-visual', 'system-visual--' + variant]} role="img" aria-label={alt}>
+  {variant === 'speech' && (
+    <>
+      <div class="signal signal--one" aria-hidden="true"></div>
+      <div class="signal signal--two" aria-hidden="true"></div>
+      <div class="pipeline-nodes" aria-hidden="true">
+        <span><i></i>Source audio</span>
+        <b>→</b>
+        <span><i></i>Curate</span>
+        <b>→</b>
+        <span><i></i>Train</span>
+        <b>→</b>
+        <span><i></i>Evaluate</span>
+      </div>
+      <div class="dialect-orbit" aria-hidden="true">
+        <span>AR</span><span>FR</span><span>EN</span><span>ES</span>
+        <strong>ASR</strong>
+      </div>
+    </>
+  )}
+  {variant === 'compute' && (
+    <>
+      <div class="compute-grid" aria-hidden="true">
+        {Array.from({ length: 30 }).map((_, index) => <i style={'--i:' + index}></i>)}
+      </div>
+      <div class="compute-core" aria-hidden="true">
+        <span>Slurm</span>
+        <strong>GPU fabric</strong>
+        <small>ROCm ↔ CUDA</small>
+      </div>
+      <div class="compute-stats" aria-hidden="true">
+        <span>256 train</span><span>1,440 infer</span>
+      </div>
+    </>
+  )}
+  {variant === 'audio' && (
+    <>
+      <div class="agent agent--a" aria-hidden="true"><span>A</span><small>left channel</small></div>
+      <div class="audio-route" aria-hidden="true">
+        <div class="waveform">
+          {Array.from({ length: 18 }).map((_, index) => <i style={'--i:' + index}></i>)}
+        </div>
+        <span>24 kHz · PCM</span>
+      </div>
+      <div class="agent agent--b" aria-hidden="true"><span>B</span><small>right channel</small></div>
+      <div class="audio-export" aria-hidden="true">
+        <span>audio</span><span>transcript</span><span>turns</span><span>metadata</span>
+      </div>
+    </>
+  )}
+</div>
